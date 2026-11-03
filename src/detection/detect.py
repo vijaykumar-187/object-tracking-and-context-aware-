@@ -105,6 +105,7 @@ def detect_people_in_frame(
     model: YOLO,
     frame: np.ndarray,
     conf_threshold: float = CONFIDENCE_THRESHOLD,
+    image_size: int = 640,
 ) -> List[Dict]:
     """
     Runs YOLO inference on a single frame targeting only the 'person' class.
@@ -116,6 +117,7 @@ def detect_people_in_frame(
         conf=conf_threshold,
         classes=[PERSON_CLASS_ID],
         device="cpu",
+        imgsz=image_size,
         verbose=False,
     )
 

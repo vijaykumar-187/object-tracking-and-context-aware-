@@ -19,6 +19,7 @@ from src.detection.detect import detect_people_in_frame
 logger = logging.getLogger(__name__)
 SUPPORTED_VIDEO_FORMATS = {".mp4", ".avi", ".mov", ".mkv", ".m4v"}
 ProgressCallback = Callable[[int, int, str], None]
+OUTPUT_MAX_WIDTH = 1280
 
 
 @dataclass
@@ -75,10 +76,18 @@ def _box_iou(box_a: tuple[int, int, int, int], box_b: tuple[int, int, int, int])
     return intersection / union if union else 0.0
 
 
-def _draw_track(frame: np.ndarray, box: tuple[int, int, int, int], track_id: int) -> None:
+def _draw_track(
+    frame: np.ndarray,
+    box: tuple[int, int, int, int],
+    camera_id: str,
+    frame_number: int,
+    track_id: int,
+) -> None:
     x1, y1, x2, y2 = box
     cv2.rectangle(frame, (x1, y1), (x2, y2), (42, 205, 155), 2)
-    cv2.putText(frame, f"ID {track_id}", (x1, max(22, y1 - 8)),
+    camera_label = camera_id.replace("camera", "Camera ").replace("cam", "Camera ")
+    label = f"{camera_label} | Frame {frame_number + 1} | ID {track_id}"
+    cv2.putText(frame, label, (x1, max(22, y1 - 8)),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.6, (42, 205, 155), 2)
 
 
@@ -87,7 +96,7 @@ def process_video(
     video_path: Path | str,
     model: object,
     output_dir: Path | str,
-    frame_interval: int = 15,
+    frame_interval: int = 30,
     confidence_threshold: float = 0.40,
     progress_callback: Optional[ProgressCallback] = None,
 ) -> ProcessingResult:
@@ -123,9 +132,11 @@ def process_video(
         capture.release()
         raise ValueError("The video does not contain readable frames.")
 
+    scale = min(1.0, OUTPUT_MAX_WIDTH / width)
+    output_size = (int(width * scale), int(height * scale))
     processed_video = output / "processed_video.mp4"
     writer = cv2.VideoWriter(
-        str(processed_video), cv2.VideoWriter_fourcc(*"mp4v"), fps, (width, height)
+        str(processed_video), cv2.VideoWriter_fourcc(*"mp4v"), fps, output_size
     )
     if not writer.isOpened():
         capture.release()
@@ -193,7 +204,7 @@ def process_video(
                         crops_saved += 1
                         track = {"box": box, "track_id": track_id}
                         refreshed_tracks.append(track)
-                        _draw_track(annotated, box, track_id)
+                        _draw_track(annotated, box, camera_id, frame_number, track_id)
                         metadata.writerow({
                             "camera_id": camera_id,
                             "frame_number": frame_number,
@@ -207,8 +218,9 @@ def process_video(
                 else:
                     stage = "Drawing boxes between detection checks"
                     for track in active_tracks:
-                        _draw_track(annotated, track["box"], track["track_id"])
-                writer.write(annotated)
+                        _draw_track(annotated, track["box"], camera_id, frame_number, track["track_id"])
+                output_frame = annotated if output_size == (width, height) else cv2.resize(annotated, output_size, interpolation=cv2.INTER_AREA)
+                writer.write(output_frame)
                 if progress_callback:
                     progress_callback(frames_read, total_frames, stage)
     except Exception:

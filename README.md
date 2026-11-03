@@ -5,9 +5,9 @@ Phase 2 prototype for daytime person detection and crop generation from up to th
 ## Phase 2 features
 
 - Upload a video for Camera 1, Camera 2, and/or Camera 3 (each camera is optional).
-- Sample frames at a configurable interval and confidence threshold.
+- Sample frames at a configurable interval (30-frame default for quicker demos) and confidence threshold.
 - Detect the COCO `person` class with the existing YOLO implementation.
-- Save a processed MP4 with boxes on frames that were actually analyzed.
+- Save a processed MP4 with boxes held between checks; preview output is limited to 1280 pixels wide while crops use the original frames.
 - Save clipped person crops, CSV detection metadata, and per-camera statistics.
 - View progress, video results, crop galleries, and download camera or complete result ZIP files.
 

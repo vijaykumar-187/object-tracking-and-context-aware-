@@ -162,11 +162,11 @@ st.markdown('<div class="section-rule"></div>', unsafe_allow_html=True)
 st.markdown('<div class="eyebrow">PROCESSING CONFIGURATION</div>', unsafe_allow_html=True)
 cfg1, cfg2, cfg3 = st.columns([1, 1, 2])
 with cfg1:
-    frame_interval = st.number_input("Analyze every N frames", min_value=1, max_value=300, value=15, step=1, help="A value of 15 analyzes one out of every 15 source frames.")
+    frame_interval = st.number_input("Analyze every N frames", min_value=1, max_value=300, value=30, step=1, help="30 is a faster demo setting; smaller values check more frames but take longer.")
 with cfg2:
     confidence = st.slider("Confidence threshold", min_value=0.10, max_value=0.95, value=0.40, step=0.05)
 with cfg3:
-    st.caption("Videos are processed one at a time on CPU. YOLO checks sampled frames; boxes stay visible between checks and refresh at the next check. Crops are saved from YOLO detection frames.")
+    st.caption("Fast demo setting: YOLO checks every 30th frame. Boxes remain visible between checks; crops use original-resolution frames. Preview video is saved at up to 720p.")
 
 if st.button("▶  START PROCESSING", type="primary", disabled=not uploaded, use_container_width=False):
     st.session_state.is_processing = True
