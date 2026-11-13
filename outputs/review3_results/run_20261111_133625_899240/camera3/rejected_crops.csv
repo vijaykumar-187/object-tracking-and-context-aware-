@@ -1,0 +1,17 @@
+camera_id,track_id,frame_number,timestamp_seconds,reason,confidence,sharpness,width,height,preview_filename
+camera3,1,15,0.6,lower_quality_in_time_window,0.7595,2719.41,92,251,camera3_track0001_frame000015_lower_quality_in_time_window.jpg
+camera3,2,15,0.6,lower_quality_in_time_window,0.7195,2530.33,161,218,camera3_track0002_frame000015_lower_quality_in_time_window.jpg
+camera3,4,15,0.6,lower_quality_in_time_window,0.5246,1542.21,210,260,camera3_track0004_frame000015_lower_quality_in_time_window.jpg
+camera3,5,15,0.6,lower_quality_in_time_window,0.2845,1112.39,276,289,camera3_track0005_frame000015_lower_quality_in_time_window.jpg
+camera3,3,90,3.6,lower_quality_in_time_window,0.7499,1974.54,224,336,camera3_track0003_frame000090_lower_quality_in_time_window.jpg
+camera3,4,90,3.6,lower_quality_in_time_window,0.3409,1578.05,218,218,camera3_track0004_frame000090_lower_quality_in_time_window.jpg
+camera3,7,90,3.6,lower_quality_in_time_window,0.4977,2279.61,135,330,camera3_track0007_frame000090_lower_quality_in_time_window.jpg
+camera3,8,90,3.6,lower_quality_in_time_window,0.2512,1375.28,297,290,camera3_track0008_frame000090_lower_quality_in_time_window.jpg
+camera3,1,165,6.6,lower_quality_in_time_window,0.3765,1951.93,57,218,camera3_track0001_frame000165_lower_quality_in_time_window.jpg
+camera3,2,165,6.6,lower_quality_in_time_window,0.2691,2792.73,129,326,camera3_track0002_frame000165_lower_quality_in_time_window.jpg
+camera3,3,165,6.6,lower_quality_in_time_window,0.7424,2323.79,228,335,camera3_track0003_frame000165_lower_quality_in_time_window.jpg
+camera3,7,165,6.6,lower_quality_in_time_window,0.3891,4114.99,120,232,camera3_track0007_frame000165_lower_quality_in_time_window.jpg
+camera3,1,240,9.6,lower_quality_in_time_window,0.7164,2271.12,65,232,camera3_track0001_frame000240_lower_quality_in_time_window.jpg
+camera3,7,240,9.6,lower_quality_in_time_window,0.7344,1552.3,110,281,camera3_track0007_frame000240_lower_quality_in_time_window.jpg
+camera3,16,270,10.8,below_minimum_size,0.2596,0.0,40,71,camera3_track0016_frame000270_below_minimum_size.jpg
+camera3,16,285,11.4,below_minimum_size,0.2675,0.0,38,71,camera3_track0016_frame000285_below_minimum_size.jpg

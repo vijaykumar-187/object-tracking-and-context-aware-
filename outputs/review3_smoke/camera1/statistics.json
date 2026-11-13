@@ -1,0 +1,18 @@
+{
+  "camera_id": "camera1",
+  "source_name": "camera1_first_4sec.mp4",
+  "processed_video": "outputs\\review3_smoke\\camera1\\processed_video.mp4",
+  "crops_dir": "outputs\\review3_smoke\\camera1\\crops",
+  "metadata_file": "outputs\\review3_smoke\\camera1\\tracks.csv",
+  "frames_read": 120,
+  "frames_processed": 12,
+  "total_detections": 116,
+  "crops_saved": 53,
+  "fps": 29.97,
+  "total_frames": 120,
+  "processing_seconds": 20.12,
+  "tracks_file": "outputs\\review3_smoke\\camera1\\tracks.csv",
+  "crops_manifest_file": "outputs\\review3_smoke\\camera1\\crops.csv",
+  "track_summary_file": "outputs\\review3_smoke\\camera1\\tracks.json",
+  "track_count": 17
+}

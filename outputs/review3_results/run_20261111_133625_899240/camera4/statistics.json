@@ -1,0 +1,20 @@
+{
+  "camera_id": "camera4",
+  "source_name": "ex004-person_texts_on_phone.mp4",
+  "processed_video": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_133625_899240\\camera4\\processed_video.mp4",
+  "crops_dir": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_133625_899240\\camera4\\crops",
+  "metadata_file": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_133625_899240\\camera4\\tracks.csv",
+  "frames_read": 362,
+  "frames_processed": 25,
+  "total_detections": 209,
+  "crops_saved": 99,
+  "fps": 25.0,
+  "total_frames": 362,
+  "processing_seconds": 37.71,
+  "tracks_file": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_133625_899240\\camera4\\tracks.csv",
+  "crops_manifest_file": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_133625_899240\\camera4\\crops.csv",
+  "track_summary_file": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_133625_899240\\camera4\\tracks.json",
+  "track_count": 17,
+  "rejected_crops_file": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_133625_899240\\camera4\\rejected_crops.csv",
+  "rejected_crops_count": 21
+}

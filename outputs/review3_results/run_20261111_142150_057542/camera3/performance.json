@@ -1,0 +1,8 @@
+{
+  "detector_inference_seconds": 2.525,
+  "detector_checks": 21,
+  "average_detector_ms": 120.22,
+  "frames_decoded_and_written": 303,
+  "total_seconds": 18.16,
+  "rejected_crop_count": 11
+}

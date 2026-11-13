@@ -1,0 +1,1617 @@
+{
+  "camera_id": "camera1",
+  "tracker": "SORT-style Kalman filter + Hungarian assignment",
+  "track_ids_are_camera_local": true,
+  "max_lost_frames": 30,
+  "tracker_settings": {
+    "max_age_frames": 30,
+    "max_center_distance": 2.5,
+    "iou_threshold": 0.3
+  },
+  "detector_settings": {
+    "image_size": 640,
+    "confidence_threshold": 0.25,
+    "frame_interval": 10,
+    "nms_iou_threshold": 0.7
+  },
+  "tracks": [
+    {
+      "camera_id": "camera1",
+      "track_id": 1,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 130,
+      "last_time_seconds": 5.2,
+      "observed_frames": 11,
+      "max_confidence": 0.8032,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.7832
+        },
+        {
+          "frame_number": 10,
+          "timestamp_seconds": 0.4,
+          "confidence": 0.8032
+        },
+        {
+          "frame_number": 20,
+          "timestamp_seconds": 0.8,
+          "confidence": 0.7344
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.7505
+        },
+        {
+          "frame_number": 40,
+          "timestamp_seconds": 1.6,
+          "confidence": 0.627
+        },
+        {
+          "frame_number": 50,
+          "timestamp_seconds": 2.0,
+          "confidence": 0.68
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.2683
+        },
+        {
+          "frame_number": 70,
+          "timestamp_seconds": 2.8,
+          "confidence": 0.3429
+        },
+        {
+          "frame_number": 100,
+          "timestamp_seconds": 4.0,
+          "confidence": 0.2923
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.2647
+        },
+        {
+          "frame_number": 130,
+          "timestamp_seconds": 5.2,
+          "confidence": 0.3083
+        }
+      ],
+      "last_box": [
+        1018,
+        80,
+        1103,
+        312
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 6,
+      "duration_seconds": 5.2,
+      "crop_filenames": [
+        "camera1_track0001_frame000010.jpg",
+        "camera1_track0001_frame000030.jpg",
+        "camera1_track0001_frame000050.jpg",
+        "camera1_track0001_frame000070.jpg",
+        "camera1_track0001_frame000100.jpg",
+        "camera1_track0001_frame000130.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 2,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 290,
+      "last_time_seconds": 11.6,
+      "observed_frames": 30,
+      "max_confidence": 0.7925,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.7403
+        },
+        {
+          "frame_number": 10,
+          "timestamp_seconds": 0.4,
+          "confidence": 0.7654
+        },
+        {
+          "frame_number": 20,
+          "timestamp_seconds": 0.8,
+          "confidence": 0.7656
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.7763
+        },
+        {
+          "frame_number": 40,
+          "timestamp_seconds": 1.6,
+          "confidence": 0.7421
+        },
+        {
+          "frame_number": 50,
+          "timestamp_seconds": 2.0,
+          "confidence": 0.7415
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.7712
+        },
+        {
+          "frame_number": 70,
+          "timestamp_seconds": 2.8,
+          "confidence": 0.7681
+        },
+        {
+          "frame_number": 80,
+          "timestamp_seconds": 3.2,
+          "confidence": 0.7722
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.7775
+        },
+        {
+          "frame_number": 100,
+          "timestamp_seconds": 4.0,
+          "confidence": 0.7925
+        },
+        {
+          "frame_number": 110,
+          "timestamp_seconds": 4.4,
+          "confidence": 0.7612
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.7476
+        },
+        {
+          "frame_number": 130,
+          "timestamp_seconds": 5.2,
+          "confidence": 0.7338
+        },
+        {
+          "frame_number": 140,
+          "timestamp_seconds": 5.6,
+          "confidence": 0.7577
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.7474
+        },
+        {
+          "frame_number": 160,
+          "timestamp_seconds": 6.4,
+          "confidence": 0.7579
+        },
+        {
+          "frame_number": 170,
+          "timestamp_seconds": 6.8,
+          "confidence": 0.752
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.6025
+        },
+        {
+          "frame_number": 190,
+          "timestamp_seconds": 7.6,
+          "confidence": 0.4807
+        },
+        {
+          "frame_number": 200,
+          "timestamp_seconds": 8.0,
+          "confidence": 0.5063
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.5361
+        },
+        {
+          "frame_number": 220,
+          "timestamp_seconds": 8.8,
+          "confidence": 0.3466
+        },
+        {
+          "frame_number": 230,
+          "timestamp_seconds": 9.2,
+          "confidence": 0.6626
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.7481
+        },
+        {
+          "frame_number": 250,
+          "timestamp_seconds": 10.0,
+          "confidence": 0.7444
+        },
+        {
+          "frame_number": 260,
+          "timestamp_seconds": 10.4,
+          "confidence": 0.6743
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.6243
+        },
+        {
+          "frame_number": 280,
+          "timestamp_seconds": 11.2,
+          "confidence": 0.6617
+        },
+        {
+          "frame_number": 290,
+          "timestamp_seconds": 11.6,
+          "confidence": 0.6853
+        }
+      ],
+      "last_box": [
+        1134,
+        344,
+        1369,
+        677
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 8,
+      "duration_seconds": 11.6,
+      "crop_filenames": [
+        "camera1_track0002_frame000010.jpg",
+        "camera1_track0002_frame000030.jpg",
+        "camera1_track0002_frame000060.jpg",
+        "camera1_track0002_frame000090.jpg",
+        "camera1_track0002_frame000100.jpg",
+        "camera1_track0002_frame000140.jpg",
+        "camera1_track0002_frame000170.jpg",
+        "camera1_track0002_frame000250.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 3,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 280,
+      "last_time_seconds": 11.2,
+      "observed_frames": 29,
+      "max_confidence": 0.8183,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.7249
+        },
+        {
+          "frame_number": 10,
+          "timestamp_seconds": 0.4,
+          "confidence": 0.6885
+        },
+        {
+          "frame_number": 20,
+          "timestamp_seconds": 0.8,
+          "confidence": 0.6012
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.6602
+        },
+        {
+          "frame_number": 40,
+          "timestamp_seconds": 1.6,
+          "confidence": 0.6531
+        },
+        {
+          "frame_number": 50,
+          "timestamp_seconds": 2.0,
+          "confidence": 0.6807
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.6359
+        },
+        {
+          "frame_number": 70,
+          "timestamp_seconds": 2.8,
+          "confidence": 0.7347
+        },
+        {
+          "frame_number": 80,
+          "timestamp_seconds": 3.2,
+          "confidence": 0.69
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.6155
+        },
+        {
+          "frame_number": 100,
+          "timestamp_seconds": 4.0,
+          "confidence": 0.7145
+        },
+        {
+          "frame_number": 110,
+          "timestamp_seconds": 4.4,
+          "confidence": 0.7483
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.7993
+        },
+        {
+          "frame_number": 130,
+          "timestamp_seconds": 5.2,
+          "confidence": 0.8102
+        },
+        {
+          "frame_number": 140,
+          "timestamp_seconds": 5.6,
+          "confidence": 0.8172
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.803
+        },
+        {
+          "frame_number": 160,
+          "timestamp_seconds": 6.4,
+          "confidence": 0.8183
+        },
+        {
+          "frame_number": 170,
+          "timestamp_seconds": 6.8,
+          "confidence": 0.7927
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.7892
+        },
+        {
+          "frame_number": 190,
+          "timestamp_seconds": 7.6,
+          "confidence": 0.7807
+        },
+        {
+          "frame_number": 200,
+          "timestamp_seconds": 8.0,
+          "confidence": 0.7789
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.7725
+        },
+        {
+          "frame_number": 220,
+          "timestamp_seconds": 8.8,
+          "confidence": 0.7497
+        },
+        {
+          "frame_number": 230,
+          "timestamp_seconds": 9.2,
+          "confidence": 0.7606
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.7555
+        },
+        {
+          "frame_number": 250,
+          "timestamp_seconds": 10.0,
+          "confidence": 0.634
+        },
+        {
+          "frame_number": 260,
+          "timestamp_seconds": 10.4,
+          "confidence": 0.6315
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.6197
+        },
+        {
+          "frame_number": 280,
+          "timestamp_seconds": 11.2,
+          "confidence": 0.6209
+        }
+      ],
+      "last_box": [
+        1202,
+        112,
+        1266,
+        338
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 8,
+      "duration_seconds": 11.2,
+      "crop_filenames": [
+        "camera1_track0003_frame000000.jpg",
+        "camera1_track0003_frame000070.jpg",
+        "camera1_track0003_frame000130.jpg",
+        "camera1_track0003_frame000140.jpg",
+        "camera1_track0003_frame000160.jpg",
+        "camera1_track0003_frame000170.jpg",
+        "camera1_track0003_frame000190.jpg",
+        "camera1_track0003_frame000230.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 4,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 290,
+      "last_time_seconds": 11.6,
+      "observed_frames": 30,
+      "max_confidence": 0.6717,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.565
+        },
+        {
+          "frame_number": 10,
+          "timestamp_seconds": 0.4,
+          "confidence": 0.5558
+        },
+        {
+          "frame_number": 20,
+          "timestamp_seconds": 0.8,
+          "confidence": 0.4591
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.546
+        },
+        {
+          "frame_number": 40,
+          "timestamp_seconds": 1.6,
+          "confidence": 0.4834
+        },
+        {
+          "frame_number": 50,
+          "timestamp_seconds": 2.0,
+          "confidence": 0.5591
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.6065
+        },
+        {
+          "frame_number": 70,
+          "timestamp_seconds": 2.8,
+          "confidence": 0.5866
+        },
+        {
+          "frame_number": 80,
+          "timestamp_seconds": 3.2,
+          "confidence": 0.6193
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.5382
+        },
+        {
+          "frame_number": 100,
+          "timestamp_seconds": 4.0,
+          "confidence": 0.6702
+        },
+        {
+          "frame_number": 110,
+          "timestamp_seconds": 4.4,
+          "confidence": 0.6717
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.6709
+        },
+        {
+          "frame_number": 130,
+          "timestamp_seconds": 5.2,
+          "confidence": 0.6631
+        },
+        {
+          "frame_number": 140,
+          "timestamp_seconds": 5.6,
+          "confidence": 0.6402
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.5793
+        },
+        {
+          "frame_number": 160,
+          "timestamp_seconds": 6.4,
+          "confidence": 0.5646
+        },
+        {
+          "frame_number": 170,
+          "timestamp_seconds": 6.8,
+          "confidence": 0.5561
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.5595
+        },
+        {
+          "frame_number": 190,
+          "timestamp_seconds": 7.6,
+          "confidence": 0.597
+        },
+        {
+          "frame_number": 200,
+          "timestamp_seconds": 8.0,
+          "confidence": 0.5492
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.6205
+        },
+        {
+          "frame_number": 220,
+          "timestamp_seconds": 8.8,
+          "confidence": 0.6229
+        },
+        {
+          "frame_number": 230,
+          "timestamp_seconds": 9.2,
+          "confidence": 0.6032
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.5223
+        },
+        {
+          "frame_number": 250,
+          "timestamp_seconds": 10.0,
+          "confidence": 0.5
+        },
+        {
+          "frame_number": 260,
+          "timestamp_seconds": 10.4,
+          "confidence": 0.525
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.5483
+        },
+        {
+          "frame_number": 280,
+          "timestamp_seconds": 11.2,
+          "confidence": 0.5257
+        },
+        {
+          "frame_number": 290,
+          "timestamp_seconds": 11.6,
+          "confidence": 0.5681
+        }
+      ],
+      "last_box": [
+        364,
+        336,
+        575,
+        614
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 8,
+      "duration_seconds": 11.6,
+      "crop_filenames": [
+        "camera1_track0004_frame000000.jpg",
+        "camera1_track0004_frame000060.jpg",
+        "camera1_track0004_frame000080.jpg",
+        "camera1_track0004_frame000110.jpg",
+        "camera1_track0004_frame000120.jpg",
+        "camera1_track0004_frame000140.jpg",
+        "camera1_track0004_frame000220.jpg",
+        "camera1_track0004_frame000290.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 5,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 290,
+      "last_time_seconds": 11.6,
+      "observed_frames": 26,
+      "max_confidence": 0.7009,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.5291
+        },
+        {
+          "frame_number": 10,
+          "timestamp_seconds": 0.4,
+          "confidence": 0.2703
+        },
+        {
+          "frame_number": 20,
+          "timestamp_seconds": 0.8,
+          "confidence": 0.2781
+        },
+        {
+          "frame_number": 50,
+          "timestamp_seconds": 2.0,
+          "confidence": 0.2672
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.3162
+        },
+        {
+          "frame_number": 70,
+          "timestamp_seconds": 2.8,
+          "confidence": 0.3393
+        },
+        {
+          "frame_number": 80,
+          "timestamp_seconds": 3.2,
+          "confidence": 0.328
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.2774
+        },
+        {
+          "frame_number": 100,
+          "timestamp_seconds": 4.0,
+          "confidence": 0.2682
+        },
+        {
+          "frame_number": 110,
+          "timestamp_seconds": 4.4,
+          "confidence": 0.6845
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.4516
+        },
+        {
+          "frame_number": 130,
+          "timestamp_seconds": 5.2,
+          "confidence": 0.3627
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.292
+        },
+        {
+          "frame_number": 160,
+          "timestamp_seconds": 6.4,
+          "confidence": 0.3225
+        },
+        {
+          "frame_number": 170,
+          "timestamp_seconds": 6.8,
+          "confidence": 0.3146
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.2539
+        },
+        {
+          "frame_number": 190,
+          "timestamp_seconds": 7.6,
+          "confidence": 0.2545
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.253
+        },
+        {
+          "frame_number": 220,
+          "timestamp_seconds": 8.8,
+          "confidence": 0.3012
+        },
+        {
+          "frame_number": 230,
+          "timestamp_seconds": 9.2,
+          "confidence": 0.2972
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.6745
+        },
+        {
+          "frame_number": 250,
+          "timestamp_seconds": 10.0,
+          "confidence": 0.7009
+        },
+        {
+          "frame_number": 260,
+          "timestamp_seconds": 10.4,
+          "confidence": 0.6991
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.6939
+        },
+        {
+          "frame_number": 280,
+          "timestamp_seconds": 11.2,
+          "confidence": 0.683
+        },
+        {
+          "frame_number": 290,
+          "timestamp_seconds": 11.6,
+          "confidence": 0.6299
+        }
+      ],
+      "last_box": [
+        1199,
+        112,
+        1266,
+        339
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 8,
+      "duration_seconds": 11.6,
+      "crop_filenames": [
+        "camera1_track0005_frame000000.jpg",
+        "camera1_track0005_frame000070.jpg",
+        "camera1_track0005_frame000110.jpg",
+        "camera1_track0005_frame000120.jpg",
+        "camera1_track0005_frame000240.jpg",
+        "camera1_track0005_frame000250.jpg",
+        "camera1_track0005_frame000270.jpg",
+        "camera1_track0005_frame000290.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 6,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 290,
+      "last_time_seconds": 11.6,
+      "observed_frames": 30,
+      "max_confidence": 0.5147,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.5097
+        },
+        {
+          "frame_number": 10,
+          "timestamp_seconds": 0.4,
+          "confidence": 0.5068
+        },
+        {
+          "frame_number": 20,
+          "timestamp_seconds": 0.8,
+          "confidence": 0.5089
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.4774
+        },
+        {
+          "frame_number": 40,
+          "timestamp_seconds": 1.6,
+          "confidence": 0.4791
+        },
+        {
+          "frame_number": 50,
+          "timestamp_seconds": 2.0,
+          "confidence": 0.5047
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.4808
+        },
+        {
+          "frame_number": 70,
+          "timestamp_seconds": 2.8,
+          "confidence": 0.4158
+        },
+        {
+          "frame_number": 80,
+          "timestamp_seconds": 3.2,
+          "confidence": 0.4586
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.4256
+        },
+        {
+          "frame_number": 100,
+          "timestamp_seconds": 4.0,
+          "confidence": 0.5147
+        },
+        {
+          "frame_number": 110,
+          "timestamp_seconds": 4.4,
+          "confidence": 0.4061
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.4065
+        },
+        {
+          "frame_number": 130,
+          "timestamp_seconds": 5.2,
+          "confidence": 0.3921
+        },
+        {
+          "frame_number": 140,
+          "timestamp_seconds": 5.6,
+          "confidence": 0.4334
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.428
+        },
+        {
+          "frame_number": 160,
+          "timestamp_seconds": 6.4,
+          "confidence": 0.4418
+        },
+        {
+          "frame_number": 170,
+          "timestamp_seconds": 6.8,
+          "confidence": 0.4285
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.4247
+        },
+        {
+          "frame_number": 190,
+          "timestamp_seconds": 7.6,
+          "confidence": 0.4199
+        },
+        {
+          "frame_number": 200,
+          "timestamp_seconds": 8.0,
+          "confidence": 0.3978
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.4272
+        },
+        {
+          "frame_number": 220,
+          "timestamp_seconds": 8.8,
+          "confidence": 0.4057
+        },
+        {
+          "frame_number": 230,
+          "timestamp_seconds": 9.2,
+          "confidence": 0.3819
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.3906
+        },
+        {
+          "frame_number": 250,
+          "timestamp_seconds": 10.0,
+          "confidence": 0.3912
+        },
+        {
+          "frame_number": 260,
+          "timestamp_seconds": 10.4,
+          "confidence": 0.4271
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.4146
+        },
+        {
+          "frame_number": 280,
+          "timestamp_seconds": 11.2,
+          "confidence": 0.428
+        },
+        {
+          "frame_number": 290,
+          "timestamp_seconds": 11.6,
+          "confidence": 0.4597
+        }
+      ],
+      "last_box": [
+        882,
+        101,
+        945,
+        210
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 8,
+      "duration_seconds": 11.6,
+      "crop_filenames": [
+        "camera1_track0006_frame000000.jpg",
+        "camera1_track0006_frame000020.jpg",
+        "camera1_track0006_frame000050.jpg",
+        "camera1_track0006_frame000060.jpg",
+        "camera1_track0006_frame000080.jpg",
+        "camera1_track0006_frame000100.jpg",
+        "camera1_track0006_frame000140.jpg",
+        "camera1_track0006_frame000290.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 7,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 150,
+      "last_time_seconds": 6.0,
+      "observed_frames": 12,
+      "max_confidence": 0.6101,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.341
+        },
+        {
+          "frame_number": 10,
+          "timestamp_seconds": 0.4,
+          "confidence": 0.382
+        },
+        {
+          "frame_number": 20,
+          "timestamp_seconds": 0.8,
+          "confidence": 0.4344
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.3378
+        },
+        {
+          "frame_number": 50,
+          "timestamp_seconds": 2.0,
+          "confidence": 0.3352
+        },
+        {
+          "frame_number": 70,
+          "timestamp_seconds": 2.8,
+          "confidence": 0.3579
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.4586
+        },
+        {
+          "frame_number": 100,
+          "timestamp_seconds": 4.0,
+          "confidence": 0.3443
+        },
+        {
+          "frame_number": 110,
+          "timestamp_seconds": 4.4,
+          "confidence": 0.3656
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.6101
+        },
+        {
+          "frame_number": 130,
+          "timestamp_seconds": 5.2,
+          "confidence": 0.4381
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.4432
+        }
+      ],
+      "last_box": [
+        1433,
+        781,
+        1914,
+        1074
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 8,
+      "duration_seconds": 6.0,
+      "crop_filenames": [
+        "camera1_track0007_frame000010.jpg",
+        "camera1_track0007_frame000020.jpg",
+        "camera1_track0007_frame000050.jpg",
+        "camera1_track0007_frame000070.jpg",
+        "camera1_track0007_frame000090.jpg",
+        "camera1_track0007_frame000100.jpg",
+        "camera1_track0007_frame000120.jpg",
+        "camera1_track0007_frame000150.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 8,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 290,
+      "last_time_seconds": 11.6,
+      "observed_frames": 28,
+      "max_confidence": 0.6916,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.3135
+        },
+        {
+          "frame_number": 10,
+          "timestamp_seconds": 0.4,
+          "confidence": 0.3699
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.3378
+        },
+        {
+          "frame_number": 40,
+          "timestamp_seconds": 1.6,
+          "confidence": 0.4623
+        },
+        {
+          "frame_number": 50,
+          "timestamp_seconds": 2.0,
+          "confidence": 0.4381
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.5976
+        },
+        {
+          "frame_number": 70,
+          "timestamp_seconds": 2.8,
+          "confidence": 0.4011
+        },
+        {
+          "frame_number": 80,
+          "timestamp_seconds": 3.2,
+          "confidence": 0.4745
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.2651
+        },
+        {
+          "frame_number": 100,
+          "timestamp_seconds": 4.0,
+          "confidence": 0.3557
+        },
+        {
+          "frame_number": 110,
+          "timestamp_seconds": 4.4,
+          "confidence": 0.3392
+        },
+        {
+          "frame_number": 130,
+          "timestamp_seconds": 5.2,
+          "confidence": 0.3711
+        },
+        {
+          "frame_number": 140,
+          "timestamp_seconds": 5.6,
+          "confidence": 0.4476
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.3041
+        },
+        {
+          "frame_number": 160,
+          "timestamp_seconds": 6.4,
+          "confidence": 0.6916
+        },
+        {
+          "frame_number": 170,
+          "timestamp_seconds": 6.8,
+          "confidence": 0.6041
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.5679
+        },
+        {
+          "frame_number": 190,
+          "timestamp_seconds": 7.6,
+          "confidence": 0.5323
+        },
+        {
+          "frame_number": 200,
+          "timestamp_seconds": 8.0,
+          "confidence": 0.5521
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.3623
+        },
+        {
+          "frame_number": 220,
+          "timestamp_seconds": 8.8,
+          "confidence": 0.3887
+        },
+        {
+          "frame_number": 230,
+          "timestamp_seconds": 9.2,
+          "confidence": 0.4957
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.4702
+        },
+        {
+          "frame_number": 250,
+          "timestamp_seconds": 10.0,
+          "confidence": 0.592
+        },
+        {
+          "frame_number": 260,
+          "timestamp_seconds": 10.4,
+          "confidence": 0.4237
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.56
+        },
+        {
+          "frame_number": 280,
+          "timestamp_seconds": 11.2,
+          "confidence": 0.624
+        },
+        {
+          "frame_number": 290,
+          "timestamp_seconds": 11.6,
+          "confidence": 0.4167
+        }
+      ],
+      "last_box": [
+        1432,
+        783,
+        1914,
+        1074
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 8,
+      "duration_seconds": 11.6,
+      "crop_filenames": [
+        "camera1_track0008_frame000060.jpg",
+        "camera1_track0008_frame000080.jpg",
+        "camera1_track0008_frame000160.jpg",
+        "camera1_track0008_frame000170.jpg",
+        "camera1_track0008_frame000190.jpg",
+        "camera1_track0008_frame000230.jpg",
+        "camera1_track0008_frame000250.jpg",
+        "camera1_track0008_frame000280.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 9,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 0,
+      "last_time_seconds": 0.0,
+      "observed_frames": 1,
+      "max_confidence": 0.2827,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.2827
+        }
+      ],
+      "last_box": [
+        1433,
+        784,
+        1733,
+        1074
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 1,
+      "duration_seconds": 0.0,
+      "crop_filenames": [
+        "camera1_track0009_frame000000.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 10,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 40,
+      "last_time_seconds": 1.6,
+      "observed_frames": 5,
+      "max_confidence": 0.4745,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.2604
+        },
+        {
+          "frame_number": 10,
+          "timestamp_seconds": 0.4,
+          "confidence": 0.4745
+        },
+        {
+          "frame_number": 20,
+          "timestamp_seconds": 0.8,
+          "confidence": 0.3247
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.3979
+        },
+        {
+          "frame_number": 40,
+          "timestamp_seconds": 1.6,
+          "confidence": 0.2502
+        }
+      ],
+      "last_box": [
+        986,
+        84,
+        1052,
+        197
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 3,
+      "duration_seconds": 1.6,
+      "crop_filenames": [
+        "camera1_track0010_frame000010.jpg",
+        "camera1_track0010_frame000030.jpg",
+        "camera1_track0010_frame000040.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 11,
+      "first_frame": 130,
+      "first_time_seconds": 5.2,
+      "last_frame": 170,
+      "last_time_seconds": 6.8,
+      "observed_frames": 4,
+      "max_confidence": 0.3139,
+      "confidence_history": [
+        {
+          "frame_number": 130,
+          "timestamp_seconds": 5.2,
+          "confidence": 0.3139
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.2595
+        },
+        {
+          "frame_number": 160,
+          "timestamp_seconds": 6.4,
+          "confidence": 0.2732
+        },
+        {
+          "frame_number": 170,
+          "timestamp_seconds": 6.8,
+          "confidence": 0.2687
+        }
+      ],
+      "last_box": [
+        916,
+        182,
+        1036,
+        385
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 3,
+      "duration_seconds": 1.6,
+      "crop_filenames": [
+        "camera1_track0011_frame000130.jpg",
+        "camera1_track0011_frame000160.jpg",
+        "camera1_track0011_frame000170.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 12,
+      "first_frame": 130,
+      "first_time_seconds": 5.2,
+      "last_frame": 200,
+      "last_time_seconds": 8.0,
+      "observed_frames": 8,
+      "max_confidence": 0.3566,
+      "confidence_history": [
+        {
+          "frame_number": 130,
+          "timestamp_seconds": 5.2,
+          "confidence": 0.2809
+        },
+        {
+          "frame_number": 140,
+          "timestamp_seconds": 5.6,
+          "confidence": 0.2575
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.3566
+        },
+        {
+          "frame_number": 160,
+          "timestamp_seconds": 6.4,
+          "confidence": 0.3255
+        },
+        {
+          "frame_number": 170,
+          "timestamp_seconds": 6.8,
+          "confidence": 0.315
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.305
+        },
+        {
+          "frame_number": 190,
+          "timestamp_seconds": 7.6,
+          "confidence": 0.2909
+        },
+        {
+          "frame_number": 200,
+          "timestamp_seconds": 8.0,
+          "confidence": 0.2615
+        }
+      ],
+      "last_box": [
+        971,
+        89,
+        1019,
+        214
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 5,
+      "duration_seconds": 2.8,
+      "crop_filenames": [
+        "camera1_track0012_frame000130.jpg",
+        "camera1_track0012_frame000140.jpg",
+        "camera1_track0012_frame000150.jpg",
+        "camera1_track0012_frame000170.jpg",
+        "camera1_track0012_frame000190.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 13,
+      "first_frame": 240,
+      "first_time_seconds": 9.6,
+      "last_frame": 290,
+      "last_time_seconds": 11.6,
+      "observed_frames": 6,
+      "max_confidence": 0.3961,
+      "confidence_history": [
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.3961
+        },
+        {
+          "frame_number": 250,
+          "timestamp_seconds": 10.0,
+          "confidence": 0.3415
+        },
+        {
+          "frame_number": 260,
+          "timestamp_seconds": 10.4,
+          "confidence": 0.33
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.3712
+        },
+        {
+          "frame_number": 280,
+          "timestamp_seconds": 11.2,
+          "confidence": 0.3462
+        },
+        {
+          "frame_number": 290,
+          "timestamp_seconds": 11.6,
+          "confidence": 0.3449
+        }
+      ],
+      "last_box": [
+        975,
+        76,
+        1108,
+        219
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 4,
+      "duration_seconds": 2.0,
+      "crop_filenames": [
+        "camera1_track0013_frame000240.jpg",
+        "camera1_track0013_frame000250.jpg",
+        "camera1_track0013_frame000270.jpg",
+        "camera1_track0013_frame000290.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 14,
+      "first_frame": 250,
+      "first_time_seconds": 10.0,
+      "last_frame": 290,
+      "last_time_seconds": 11.6,
+      "observed_frames": 3,
+      "max_confidence": 0.6697,
+      "confidence_history": [
+        {
+          "frame_number": 250,
+          "timestamp_seconds": 10.0,
+          "confidence": 0.2884
+        },
+        {
+          "frame_number": 280,
+          "timestamp_seconds": 11.2,
+          "confidence": 0.2725
+        },
+        {
+          "frame_number": 290,
+          "timestamp_seconds": 11.6,
+          "confidence": 0.6697
+        }
+      ],
+      "last_box": [
+        915,
+        173,
+        1087,
+        386
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 3,
+      "duration_seconds": 1.6,
+      "crop_filenames": [
+        "camera1_track0014_frame000250.jpg",
+        "camera1_track0014_frame000280.jpg",
+        "camera1_track0014_frame000290.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 15,
+      "first_frame": 280,
+      "first_time_seconds": 11.2,
+      "last_frame": 290,
+      "last_time_seconds": 11.6,
+      "observed_frames": 2,
+      "max_confidence": 0.2936,
+      "confidence_history": [
+        {
+          "frame_number": 280,
+          "timestamp_seconds": 11.2,
+          "confidence": 0.2598
+        },
+        {
+          "frame_number": 290,
+          "timestamp_seconds": 11.6,
+          "confidence": 0.2936
+        }
+      ],
+      "last_box": [
+        878,
+        99,
+        967,
+        213
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 2,
+      "duration_seconds": 0.4,
+      "crop_filenames": [
+        "camera1_track0015_frame000280.jpg",
+        "camera1_track0015_frame000290.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera1",
+      "track_id": 16,
+      "first_frame": 290,
+      "first_time_seconds": 11.6,
+      "last_frame": 290,
+      "last_time_seconds": 11.6,
+      "observed_frames": 1,
+      "max_confidence": 0.3172,
+      "confidence_history": [
+        {
+          "frame_number": 290,
+          "timestamp_seconds": 11.6,
+          "confidence": 0.3172
+        }
+      ],
+      "last_box": [
+        1435,
+        653,
+        1918,
+        1073
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 1,
+      "duration_seconds": 0.0,
+      "crop_filenames": [
+        "camera1_track0016_frame000290.jpg"
+      ]
+    }
+  ]
+}

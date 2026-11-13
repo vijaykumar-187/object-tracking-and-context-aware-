@@ -9,7 +9,9 @@ import csv
 import sys
 import tempfile
 import unittest
+from types import SimpleNamespace
 from pathlib import Path
+from unittest.mock import Mock
 
 import cv2
 import numpy as np
@@ -124,6 +126,29 @@ class TestDetectionPipelineIntegration(unittest.TestCase):
         with open(test_csv_path, "r", encoding="utf-8") as f:
             header_line = f.readline().strip().split(",")
             self.assertEqual(header_line, CSV_FIELDNAMES)
+
+    def test_yolo_nms_configuration_and_box_validation(self):
+        import torch
+
+        class Box:
+            def __init__(self, xyxy, confidence):
+                self.xyxy = torch.tensor([xyxy], dtype=torch.float32)
+                self.conf = torch.tensor([confidence], dtype=torch.float32)
+
+        model = Mock()
+        model.predict.return_value = [SimpleNamespace(boxes=[
+            Box([-5, 5, 50, 70], 0.91),
+            Box([15, 15, 10, 25], 0.88),
+        ])]
+        detections = detect_people_in_frame(
+            model, np.zeros((80, 60, 3), dtype=np.uint8),
+            conf_threshold=0.3, image_size=416, nms_iou_threshold=0.55,
+        )
+        self.assertEqual(len(detections), 1)
+        self.assertEqual(detections[0]["box"], (0, 5, 50, 70))
+        self.assertAlmostEqual(detections[0]["confidence"], 0.91, places=5)
+        self.assertEqual(model.predict.call_args.kwargs["iou"], 0.55)
+        self.assertEqual(model.predict.call_args.kwargs["classes"], [0])
 
 
 if __name__ == "__main__":

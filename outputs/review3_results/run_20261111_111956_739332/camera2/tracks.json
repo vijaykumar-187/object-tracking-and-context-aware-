@@ -1,0 +1,292 @@
+{
+  "camera_id": "camera2",
+  "tracker": "SORT-style Kalman filter + Hungarian assignment",
+  "track_ids_are_camera_local": true,
+  "max_lost_frames": 30,
+  "tracks": [
+    {
+      "camera_id": "camera2",
+      "track_id": 1,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 55,
+      "last_time_seconds": 2.2,
+      "observed_frames": 12,
+      "max_confidence": 0.8032,
+      "last_box": [
+        916,
+        174,
+        1084,
+        387
+      ],
+      "status": "ended",
+      "crop_count": 3,
+      "crop_filenames": [
+        "camera2_track0001_frame000010.jpg",
+        "camera2_track0001_frame000030.jpg",
+        "camera2_track0001_frame000050.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 2,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 295,
+      "last_time_seconds": 11.8,
+      "observed_frames": 59,
+      "max_confidence": 0.8067,
+      "last_box": [
+        1133,
+        343,
+        1370,
+        676
+      ],
+      "status": "active at end",
+      "crop_count": 8,
+      "crop_filenames": [
+        "camera2_track0002_frame000015.jpg",
+        "camera2_track0002_frame000030.jpg",
+        "camera2_track0002_frame000065.jpg",
+        "camera2_track0002_frame000090.jpg",
+        "camera2_track0002_frame000100.jpg",
+        "camera2_track0002_frame000140.jpg",
+        "camera2_track0002_frame000155.jpg",
+        "camera2_track0002_frame000245.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 3,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 295,
+      "last_time_seconds": 11.8,
+      "observed_frames": 59,
+      "max_confidence": 0.8183,
+      "last_box": [
+        882,
+        101,
+        946,
+        211
+      ],
+      "status": "active at end",
+      "crop_count": 8,
+      "crop_filenames": [
+        "camera2_track0003_frame000110.jpg",
+        "camera2_track0003_frame000130.jpg",
+        "camera2_track0003_frame000140.jpg",
+        "camera2_track0003_frame000160.jpg",
+        "camera2_track0003_frame000175.jpg",
+        "camera2_track0003_frame000195.jpg",
+        "camera2_track0003_frame000215.jpg",
+        "camera2_track0003_frame000230.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 4,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 295,
+      "last_time_seconds": 11.8,
+      "observed_frames": 60,
+      "max_confidence": 0.6831,
+      "last_box": [
+        364,
+        336,
+        574,
+        614
+      ],
+      "status": "active at end",
+      "crop_count": 8,
+      "crop_filenames": [
+        "camera2_track0004_frame000060.jpg",
+        "camera2_track0004_frame000075.jpg",
+        "camera2_track0004_frame000110.jpg",
+        "camera2_track0004_frame000115.jpg",
+        "camera2_track0004_frame000135.jpg",
+        "camera2_track0004_frame000185.jpg",
+        "camera2_track0004_frame000220.jpg",
+        "camera2_track0004_frame000235.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 5,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 25,
+      "last_time_seconds": 1.0,
+      "observed_frames": 5,
+      "max_confidence": 0.5981,
+      "last_box": [
+        1000,
+        80,
+        1092,
+        214
+      ],
+      "status": "ended",
+      "crop_count": 2,
+      "crop_filenames": [
+        "camera2_track0005_frame000005.jpg",
+        "camera2_track0005_frame000025.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 6,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 135,
+      "last_time_seconds": 5.4,
+      "observed_frames": 26,
+      "max_confidence": 0.7231,
+      "last_box": [
+        911,
+        80,
+        1098,
+        382
+      ],
+      "status": "ended",
+      "crop_count": 8,
+      "crop_filenames": [
+        "camera2_track0006_frame000015.jpg",
+        "camera2_track0006_frame000020.jpg",
+        "camera2_track0006_frame000050.jpg",
+        "camera2_track0006_frame000065.jpg",
+        "camera2_track0006_frame000080.jpg",
+        "camera2_track0006_frame000100.jpg",
+        "camera2_track0006_frame000115.jpg",
+        "camera2_track0006_frame000135.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 7,
+      "first_frame": 5,
+      "first_time_seconds": 0.2,
+      "last_frame": 110,
+      "last_time_seconds": 4.4,
+      "observed_frames": 15,
+      "max_confidence": 0.6845,
+      "last_box": [
+        917,
+        75,
+        1105,
+        390
+      ],
+      "status": "ended",
+      "crop_count": 6,
+      "crop_filenames": [
+        "camera2_track0007_frame000005.jpg",
+        "camera2_track0007_frame000035.jpg",
+        "camera2_track0007_frame000040.jpg",
+        "camera2_track0007_frame000060.jpg",
+        "camera2_track0007_frame000080.jpg",
+        "camera2_track0007_frame000110.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 8,
+      "first_frame": 120,
+      "first_time_seconds": 4.8,
+      "last_frame": 265,
+      "last_time_seconds": 10.6,
+      "observed_frames": 27,
+      "max_confidence": 0.7711,
+      "last_box": [
+        1197,
+        120,
+        1277,
+        352
+      ],
+      "status": "temporarily lost",
+      "crop_count": 8,
+      "crop_filenames": [
+        "camera2_track0008_frame000125.jpg",
+        "camera2_track0008_frame000135.jpg",
+        "camera2_track0008_frame000160.jpg",
+        "camera2_track0008_frame000185.jpg",
+        "camera2_track0008_frame000195.jpg",
+        "camera2_track0008_frame000235.jpg",
+        "camera2_track0008_frame000255.jpg",
+        "camera2_track0008_frame000265.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 9,
+      "first_frame": 120,
+      "first_time_seconds": 4.8,
+      "last_frame": 295,
+      "last_time_seconds": 11.8,
+      "observed_frames": 28,
+      "max_confidence": 0.7103,
+      "last_box": [
+        916,
+        173,
+        1087,
+        387
+      ],
+      "status": "active at end",
+      "crop_count": 8,
+      "crop_filenames": [
+        "camera2_track0009_frame000145.jpg",
+        "camera2_track0009_frame000160.jpg",
+        "camera2_track0009_frame000185.jpg",
+        "camera2_track0009_frame000215.jpg",
+        "camera2_track0009_frame000240.jpg",
+        "camera2_track0009_frame000250.jpg",
+        "camera2_track0009_frame000265.jpg",
+        "camera2_track0009_frame000295.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 10,
+      "first_frame": 245,
+      "first_time_seconds": 9.8,
+      "last_frame": 295,
+      "last_time_seconds": 11.8,
+      "observed_frames": 9,
+      "max_confidence": 0.6512,
+      "last_box": [
+        1199,
+        112,
+        1266,
+        341
+      ],
+      "status": "active at end",
+      "crop_count": 3,
+      "crop_filenames": [
+        "camera2_track0010_frame000245.jpg",
+        "camera2_track0010_frame000275.jpg",
+        "camera2_track0010_frame000290.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 11,
+      "first_frame": 270,
+      "first_time_seconds": 10.8,
+      "last_frame": 295,
+      "last_time_seconds": 11.8,
+      "observed_frames": 6,
+      "max_confidence": 0.624,
+      "last_box": [
+        1433,
+        780,
+        1913,
+        1074
+      ],
+      "status": "active at end",
+      "crop_count": 2,
+      "crop_filenames": [
+        "camera2_track0011_frame000280.jpg",
+        "camera2_track0011_frame000285.jpg"
+      ]
+    }
+  ]
+}

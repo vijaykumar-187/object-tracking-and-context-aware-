@@ -1,0 +1,34 @@
+{
+  "GLOBAL-001": {
+    "global_person_id": "GLOBAL-001",
+    "source": {
+      "camera_id": "camera2",
+      "camera_name": "Camera 2",
+      "track_id": 1
+    },
+    "members": [
+      {
+        "camera_id": "camera2",
+        "camera_name": "Camera 2",
+        "track_id": 1,
+        "status": "SOURCE"
+      }
+    ]
+  },
+  "GLOBAL-002": {
+    "global_person_id": "GLOBAL-002",
+    "source": {
+      "camera_id": "camera1",
+      "camera_name": "Camera 1",
+      "track_id": 10
+    },
+    "members": [
+      {
+        "camera_id": "camera1",
+        "camera_name": "Camera 1",
+        "track_id": 10,
+        "status": "SOURCE"
+      }
+    ]
+  }
+}

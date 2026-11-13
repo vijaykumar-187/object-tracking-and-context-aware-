@@ -1,0 +1,14 @@
+[
+  {
+    "camera_id": "camera1",
+    "camera_name": "Camera 1",
+    "source_name": "ex019-person_embraces_person.mp4",
+    "source_path": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_195844_596821\\camera1\\ex019-person_embraces_person.mp4"
+  },
+  {
+    "camera_id": "camera2",
+    "camera_name": "Camera 2",
+    "source_name": "ex020-person_interacts_with_laptop.mp4",
+    "source_path": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_195844_596821\\camera2\\ex020-person_interacts_with_laptop.mp4"
+  }
+]

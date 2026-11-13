@@ -1,0 +1,12 @@
+camera_id,track_id,frame_number,timestamp_seconds,reason,confidence,sharpness,width,height,preview_filename
+camera2,1,15,0.6,lower_quality_in_time_window,0.719,2302.58,163,208,camera2_track0001_frame000015_lower_quality_in_time_window.jpg
+camera2,3,15,0.6,lower_quality_in_time_window,0.6581,3397.17,58,228,camera2_track0003_frame000015_lower_quality_in_time_window.jpg
+camera2,4,15,0.6,lower_quality_in_time_window,0.5106,2120.98,214,223,camera2_track0004_frame000015_lower_quality_in_time_window.jpg
+camera2,5,15,0.6,lower_quality_in_time_window,0.424,3853.79,90,145,camera2_track0005_frame000015_lower_quality_in_time_window.jpg
+camera2,4,90,3.6,lower_quality_in_time_window,0.5382,2025.66,214,215,camera2_track0004_frame000090_lower_quality_in_time_window.jpg
+camera2,5,90,3.6,lower_quality_in_time_window,0.6155,2857.08,73,228,camera2_track0005_frame000090_lower_quality_in_time_window.jpg
+camera2,6,90,3.6,lower_quality_in_time_window,0.4256,3457.73,67,111,camera2_track0006_frame000090_lower_quality_in_time_window.jpg
+camera2,3,165,6.6,lower_quality_in_time_window,0.4056,1307.48,480,292,camera2_track0003_frame000165_lower_quality_in_time_window.jpg
+camera2,4,165,6.6,lower_quality_in_time_window,0.5487,1990.77,217,218,camera2_track0004_frame000165_lower_quality_in_time_window.jpg
+camera2,6,165,6.6,lower_quality_in_time_window,0.4212,3764.5,62,109,camera2_track0006_frame000165_lower_quality_in_time_window.jpg
+camera2,4,240,9.6,lower_quality_in_time_window,0.5223,2029.19,214,225,camera2_track0004_frame000240_lower_quality_in_time_window.jpg

@@ -1,0 +1,11 @@
+{
+  "camera_count": 2,
+  "query_camera": "camera1",
+  "gallery_camera": "camera2",
+  "match_rows": 51,
+  "feature_model": "OSNet x0.25 (MSMT17)",
+  "aggregation": "mean",
+  "processing_seconds": 72.15,
+  "accuracy_evaluated": false,
+  "accuracy_note": "No complete ground-truth labels were supplied for this run."
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "camera_id": "camera1",
+    "camera_name": "Camera 1",
+    "source_name": "ex001-person_transfers_object.mp4",
+    "source_path": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_183443_629549\\camera1\\ex001-person_transfers_object.mp4"
+  },
+  {
+    "camera_id": "camera2",
+    "camera_name": "Camera 2",
+    "source_name": "ex002-person_purchases.mp4",
+    "source_path": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_183443_629549\\camera2\\ex002-person_purchases.mp4"
+  },
+  {
+    "camera_id": "camera3",
+    "camera_name": "Camera 3",
+    "source_name": "ex003-person_reads_document.mp4",
+    "source_path": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_183443_629549\\camera3\\ex003-person_reads_document.mp4"
+  }
+]

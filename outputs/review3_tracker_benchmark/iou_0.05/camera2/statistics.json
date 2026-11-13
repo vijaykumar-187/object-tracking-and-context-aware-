@@ -1,0 +1,20 @@
+{
+  "camera_id": "camera2",
+  "source_name": "input.mp4",
+  "processed_video": "outputs\\review3_tracker_benchmark\\iou_0.05\\camera2\\processed_video.mp4",
+  "crops_dir": "outputs\\review3_tracker_benchmark\\iou_0.05\\camera2\\crops",
+  "metadata_file": "outputs\\review3_tracker_benchmark\\iou_0.05\\camera2\\tracks.csv",
+  "frames_read": 303,
+  "frames_processed": 31,
+  "total_detections": 240,
+  "crops_saved": 98,
+  "fps": 25.0,
+  "total_frames": 303,
+  "processing_seconds": 29.67,
+  "tracks_file": "outputs\\review3_tracker_benchmark\\iou_0.05\\camera2\\tracks.csv",
+  "crops_manifest_file": "outputs\\review3_tracker_benchmark\\iou_0.05\\camera2\\crops.csv",
+  "track_summary_file": "outputs\\review3_tracker_benchmark\\iou_0.05\\camera2\\tracks.json",
+  "track_count": 17,
+  "rejected_crops_file": "outputs\\review3_tracker_benchmark\\iou_0.05\\camera2\\rejected_crops.csv",
+  "rejected_crops_count": 38
+}

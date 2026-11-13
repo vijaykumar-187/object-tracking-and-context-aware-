@@ -1,0 +1,36 @@
+[
+  {
+    "global_person_id": "GLOBAL-002",
+    "camera_id": "camera1",
+    "camera_name": "Camera 1",
+    "original_filename": "ex019-person_embraces_person.mp4",
+    "local_track_id": 10,
+    "match_status": "SOURCE TRACK",
+    "match_similarity": "",
+    "appearance_model": "",
+    "video_filename": "GLOBAL-002_Camera-1_tracked.mp4",
+    "video_path": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_195844_596821\\global_person_videos\\GLOBAL-002\\GLOBAL-002_Camera-1_tracked.mp4",
+    "width": 1920,
+    "height": 1080,
+    "fps": 25.0,
+    "frame_count": 324,
+    "duration_seconds": 12.96
+  },
+  {
+    "global_person_id": "GLOBAL-002",
+    "camera_id": "camera2",
+    "camera_name": "Camera 2",
+    "original_filename": "ex020-person_interacts_with_laptop.mp4",
+    "local_track_id": "",
+    "match_status": "NO RELIABLE MATCH",
+    "match_similarity": "",
+    "appearance_model": "",
+    "video_filename": "GLOBAL-002_Camera-2_tracked.mp4",
+    "video_path": "C:\\Users\\HP ELITEBOOK 840 G6\\Desktop\\person-reid-project\\outputs\\review3_results\\run_20261111_195844_596821\\global_person_videos\\GLOBAL-002\\GLOBAL-002_Camera-2_tracked.mp4",
+    "width": 1920,
+    "height": 1080,
+    "fps": 25.0,
+    "frame_count": 396,
+    "duration_seconds": 15.84
+  }
+]

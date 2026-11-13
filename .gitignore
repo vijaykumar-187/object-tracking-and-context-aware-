@@ -1,22 +1,14 @@
-# Python virtual environment
+# Python virtual environments
 venv/
 .venv/
 
 # Python cache
 __pycache__/
+.pytest_cache/
+
+__pycache__/
+.pytest_cache/
 *.py[cod]
-
-# Model weights
-*.pt
-*.pth
-*.onnx
-
-# Dataset videos and images
-data/videos/*
-data/crops/*
-
-# Generated outputs
-outputs/
 
 # Temporary files
 *.log

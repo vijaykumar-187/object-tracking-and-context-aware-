@@ -1,0 +1,1210 @@
+{
+  "camera_id": "camera2",
+  "tracker": "SORT-style Kalman filter + Hungarian assignment",
+  "track_ids_are_camera_local": true,
+  "max_lost_frames": 30,
+  "tracker_settings": {
+    "max_age_frames": 30,
+    "max_center_distance": 2.5,
+    "iou_threshold": 0.05
+  },
+  "detector_settings": {
+    "image_size": 640,
+    "confidence_threshold": 0.4,
+    "frame_interval": 30,
+    "nms_iou_threshold": 0.7
+  },
+  "tracks": [
+    {
+      "camera_id": "camera2",
+      "track_id": 1,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 150,
+      "last_time_seconds": 6.0,
+      "observed_frames": 6,
+      "max_confidence": 0.8333,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.8333
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.8094
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.7965
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.795
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.791
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.4105
+        }
+      ],
+      "last_box": [
+        920,
+        102,
+        1122,
+        370
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 6,
+      "duration_seconds": 6.0,
+      "crop_filenames": [
+        "camera2_track0001_frame000000.jpg",
+        "camera2_track0001_frame000030.jpg",
+        "camera2_track0001_frame000060.jpg",
+        "camera2_track0001_frame000090.jpg",
+        "camera2_track0001_frame000120.jpg",
+        "camera2_track0001_frame000150.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 2,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 90,
+      "last_time_seconds": 3.6,
+      "observed_frames": 4,
+      "max_confidence": 0.8074,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.8074
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.7776
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.7742
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.4518
+        }
+      ],
+      "last_box": [
+        615,
+        664,
+        891,
+        1069
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 4,
+      "duration_seconds": 3.6,
+      "crop_filenames": [
+        "camera2_track0002_frame000000.jpg",
+        "camera2_track0002_frame000030.jpg",
+        "camera2_track0002_frame000060.jpg",
+        "camera2_track0002_frame000090.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 3,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 90,
+      "last_time_seconds": 3.6,
+      "observed_frames": 4,
+      "max_confidence": 0.7709,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.7513
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.685
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.4869
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.7709
+        }
+      ],
+      "last_box": [
+        1103,
+        252,
+        1272,
+        696
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 4,
+      "duration_seconds": 3.6,
+      "crop_filenames": [
+        "camera2_track0003_frame000000.jpg",
+        "camera2_track0003_frame000030.jpg",
+        "camera2_track0003_frame000060.jpg",
+        "camera2_track0003_frame000090.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 4,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 360,
+      "last_time_seconds": 14.4,
+      "observed_frames": 13,
+      "max_confidence": 0.7757,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.7513
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.7211
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.5713
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.7058
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.4522
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.6066
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.6873
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.6291
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.7136
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.7589
+        },
+        {
+          "frame_number": 300,
+          "timestamp_seconds": 12.0,
+          "confidence": 0.7757
+        },
+        {
+          "frame_number": 330,
+          "timestamp_seconds": 13.2,
+          "confidence": 0.6832
+        },
+        {
+          "frame_number": 360,
+          "timestamp_seconds": 14.4,
+          "confidence": 0.4404
+        }
+      ],
+      "last_box": [
+        1045,
+        93,
+        1119,
+        245
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 8,
+      "duration_seconds": 14.4,
+      "crop_filenames": [
+        "camera2_track0004_frame000000.jpg",
+        "camera2_track0004_frame000030.jpg",
+        "camera2_track0004_frame000090.jpg",
+        "camera2_track0004_frame000180.jpg",
+        "camera2_track0004_frame000240.jpg",
+        "camera2_track0004_frame000270.jpg",
+        "camera2_track0004_frame000300.jpg",
+        "camera2_track0004_frame000330.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 5,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 390,
+      "last_time_seconds": 15.6,
+      "observed_frames": 14,
+      "max_confidence": 0.8281,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.7485
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.7344
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.7631
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.6662
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.5345
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.7648
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.756
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.63
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.7567
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.7739
+        },
+        {
+          "frame_number": 300,
+          "timestamp_seconds": 12.0,
+          "confidence": 0.8027
+        },
+        {
+          "frame_number": 330,
+          "timestamp_seconds": 13.2,
+          "confidence": 0.8281
+        },
+        {
+          "frame_number": 360,
+          "timestamp_seconds": 14.4,
+          "confidence": 0.7684
+        },
+        {
+          "frame_number": 390,
+          "timestamp_seconds": 15.6,
+          "confidence": 0.5683
+        }
+      ],
+      "last_box": [
+        1110,
+        276,
+        1379,
+        829
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 8,
+      "duration_seconds": 15.6,
+      "crop_filenames": [
+        "camera2_track0005_frame000000.jpg",
+        "camera2_track0005_frame000060.jpg",
+        "camera2_track0005_frame000150.jpg",
+        "camera2_track0005_frame000240.jpg",
+        "camera2_track0005_frame000270.jpg",
+        "camera2_track0005_frame000300.jpg",
+        "camera2_track0005_frame000330.jpg",
+        "camera2_track0005_frame000360.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 6,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 390,
+      "last_time_seconds": 15.6,
+      "observed_frames": 14,
+      "max_confidence": 0.6701,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.6701
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.5814
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.4193
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.5183
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.537
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.5988
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.6128
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.5773
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.5403
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.586
+        },
+        {
+          "frame_number": 300,
+          "timestamp_seconds": 12.0,
+          "confidence": 0.5561
+        },
+        {
+          "frame_number": 330,
+          "timestamp_seconds": 13.2,
+          "confidence": 0.5764
+        },
+        {
+          "frame_number": 360,
+          "timestamp_seconds": 14.4,
+          "confidence": 0.5742
+        },
+        {
+          "frame_number": 390,
+          "timestamp_seconds": 15.6,
+          "confidence": 0.4869
+        }
+      ],
+      "last_box": [
+        847,
+        150,
+        970,
+        298
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 8,
+      "duration_seconds": 15.6,
+      "crop_filenames": [
+        "camera2_track0006_frame000000.jpg",
+        "camera2_track0006_frame000030.jpg",
+        "camera2_track0006_frame000150.jpg",
+        "camera2_track0006_frame000180.jpg",
+        "camera2_track0006_frame000210.jpg",
+        "camera2_track0006_frame000270.jpg",
+        "camera2_track0006_frame000330.jpg",
+        "camera2_track0006_frame000360.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 7,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 180,
+      "last_time_seconds": 7.2,
+      "observed_frames": 7,
+      "max_confidence": 0.8039,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.5455
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.4468
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.4658
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.5816
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.4244
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.8039
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.4164
+        }
+      ],
+      "last_box": [
+        668,
+        204,
+        753,
+        292
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 7,
+      "duration_seconds": 7.2,
+      "crop_filenames": [
+        "camera2_track0007_frame000000.jpg",
+        "camera2_track0007_frame000030.jpg",
+        "camera2_track0007_frame000060.jpg",
+        "camera2_track0007_frame000090.jpg",
+        "camera2_track0007_frame000120.jpg",
+        "camera2_track0007_frame000150.jpg",
+        "camera2_track0007_frame000180.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 8,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 360,
+      "last_time_seconds": 14.4,
+      "observed_frames": 13,
+      "max_confidence": 0.8237,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.4906
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.7938
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.8217
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.7742
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.4898
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.81
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.5215
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.4539
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.5274
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.8237
+        },
+        {
+          "frame_number": 300,
+          "timestamp_seconds": 12.0,
+          "confidence": 0.6932
+        },
+        {
+          "frame_number": 330,
+          "timestamp_seconds": 13.2,
+          "confidence": 0.7161
+        },
+        {
+          "frame_number": 360,
+          "timestamp_seconds": 14.4,
+          "confidence": 0.4513
+        }
+      ],
+      "last_box": [
+        545,
+        275,
+        613,
+        471
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 8,
+      "duration_seconds": 14.4,
+      "crop_filenames": [
+        "camera2_track0008_frame000030.jpg",
+        "camera2_track0008_frame000060.jpg",
+        "camera2_track0008_frame000090.jpg",
+        "camera2_track0008_frame000150.jpg",
+        "camera2_track0008_frame000240.jpg",
+        "camera2_track0008_frame000270.jpg",
+        "camera2_track0008_frame000300.jpg",
+        "camera2_track0008_frame000330.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 9,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 300,
+      "last_time_seconds": 12.0,
+      "observed_frames": 11,
+      "max_confidence": 0.8604,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.4427
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.6551
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.8604
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.7003
+        },
+        {
+          "frame_number": 120,
+          "timestamp_seconds": 4.8,
+          "confidence": 0.4859
+        },
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.6193
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.6509
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.6575
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.4274
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.605
+        },
+        {
+          "frame_number": 300,
+          "timestamp_seconds": 12.0,
+          "confidence": 0.5134
+        }
+      ],
+      "last_box": [
+        613,
+        700,
+        877,
+        1068
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 8,
+      "duration_seconds": 12.0,
+      "crop_filenames": [
+        "camera2_track0009_frame000030.jpg",
+        "camera2_track0009_frame000060.jpg",
+        "camera2_track0009_frame000090.jpg",
+        "camera2_track0009_frame000150.jpg",
+        "camera2_track0009_frame000180.jpg",
+        "camera2_track0009_frame000210.jpg",
+        "camera2_track0009_frame000270.jpg",
+        "camera2_track0009_frame000300.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 10,
+      "first_frame": 0,
+      "first_time_seconds": 0.0,
+      "last_frame": 90,
+      "last_time_seconds": 3.6,
+      "observed_frames": 4,
+      "max_confidence": 0.5206,
+      "confidence_history": [
+        {
+          "frame_number": 0,
+          "timestamp_seconds": 0.0,
+          "confidence": 0.4282
+        },
+        {
+          "frame_number": 30,
+          "timestamp_seconds": 1.2,
+          "confidence": 0.5206
+        },
+        {
+          "frame_number": 60,
+          "timestamp_seconds": 2.4,
+          "confidence": 0.4815
+        },
+        {
+          "frame_number": 90,
+          "timestamp_seconds": 3.6,
+          "confidence": 0.4229
+        }
+      ],
+      "last_box": [
+        663,
+        203,
+        755,
+        294
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 4,
+      "duration_seconds": 3.6,
+      "crop_filenames": [
+        "camera2_track0010_frame000000.jpg",
+        "camera2_track0010_frame000030.jpg",
+        "camera2_track0010_frame000060.jpg",
+        "camera2_track0010_frame000090.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 11,
+      "first_frame": 150,
+      "first_time_seconds": 6.0,
+      "last_frame": 390,
+      "last_time_seconds": 15.6,
+      "observed_frames": 9,
+      "max_confidence": 0.804,
+      "confidence_history": [
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.7321
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.6702
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.4737
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.5959
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.7657
+        },
+        {
+          "frame_number": 300,
+          "timestamp_seconds": 12.0,
+          "confidence": 0.804
+        },
+        {
+          "frame_number": 330,
+          "timestamp_seconds": 13.2,
+          "confidence": 0.7404
+        },
+        {
+          "frame_number": 360,
+          "timestamp_seconds": 14.4,
+          "confidence": 0.6861
+        },
+        {
+          "frame_number": 390,
+          "timestamp_seconds": 15.6,
+          "confidence": 0.6805
+        }
+      ],
+      "last_box": [
+        1600,
+        549,
+        1848,
+        917
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 8,
+      "duration_seconds": 9.6,
+      "crop_filenames": [
+        "camera2_track0011_frame000150.jpg",
+        "camera2_track0011_frame000180.jpg",
+        "camera2_track0011_frame000240.jpg",
+        "camera2_track0011_frame000270.jpg",
+        "camera2_track0011_frame000300.jpg",
+        "camera2_track0011_frame000330.jpg",
+        "camera2_track0011_frame000360.jpg",
+        "camera2_track0011_frame000390.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 12,
+      "first_frame": 150,
+      "first_time_seconds": 6.0,
+      "last_frame": 240,
+      "last_time_seconds": 9.6,
+      "observed_frames": 4,
+      "max_confidence": 0.8093,
+      "confidence_history": [
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.6459
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.7976
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.8093
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.5787
+        }
+      ],
+      "last_box": [
+        549,
+        273,
+        813,
+        480
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 4,
+      "duration_seconds": 3.6,
+      "crop_filenames": [
+        "camera2_track0012_frame000150.jpg",
+        "camera2_track0012_frame000180.jpg",
+        "camera2_track0012_frame000210.jpg",
+        "camera2_track0012_frame000240.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 13,
+      "first_frame": 150,
+      "first_time_seconds": 6.0,
+      "last_frame": 390,
+      "last_time_seconds": 15.6,
+      "observed_frames": 9,
+      "max_confidence": 0.6208,
+      "confidence_history": [
+        {
+          "frame_number": 150,
+          "timestamp_seconds": 6.0,
+          "confidence": 0.4148
+        },
+        {
+          "frame_number": 180,
+          "timestamp_seconds": 7.2,
+          "confidence": 0.4326
+        },
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.5861
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.6208
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.4605
+        },
+        {
+          "frame_number": 300,
+          "timestamp_seconds": 12.0,
+          "confidence": 0.4295
+        },
+        {
+          "frame_number": 330,
+          "timestamp_seconds": 13.2,
+          "confidence": 0.5055
+        },
+        {
+          "frame_number": 360,
+          "timestamp_seconds": 14.4,
+          "confidence": 0.5213
+        },
+        {
+          "frame_number": 390,
+          "timestamp_seconds": 15.6,
+          "confidence": 0.5617
+        }
+      ],
+      "last_box": [
+        914,
+        159,
+        1056,
+        366
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 8,
+      "duration_seconds": 9.6,
+      "crop_filenames": [
+        "camera2_track0013_frame000150.jpg",
+        "camera2_track0013_frame000180.jpg",
+        "camera2_track0013_frame000210.jpg",
+        "camera2_track0013_frame000240.jpg",
+        "camera2_track0013_frame000270.jpg",
+        "camera2_track0013_frame000330.jpg",
+        "camera2_track0013_frame000360.jpg",
+        "camera2_track0013_frame000390.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 14,
+      "first_frame": 210,
+      "first_time_seconds": 8.4,
+      "last_frame": 390,
+      "last_time_seconds": 15.6,
+      "observed_frames": 7,
+      "max_confidence": 0.5763,
+      "confidence_history": [
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.4716
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.445
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.4457
+        },
+        {
+          "frame_number": 300,
+          "timestamp_seconds": 12.0,
+          "confidence": 0.4205
+        },
+        {
+          "frame_number": 330,
+          "timestamp_seconds": 13.2,
+          "confidence": 0.4816
+        },
+        {
+          "frame_number": 360,
+          "timestamp_seconds": 14.4,
+          "confidence": 0.5763
+        },
+        {
+          "frame_number": 390,
+          "timestamp_seconds": 15.6,
+          "confidence": 0.5151
+        }
+      ],
+      "last_box": [
+        729,
+        245,
+        936,
+        604
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 7,
+      "duration_seconds": 7.2,
+      "crop_filenames": [
+        "camera2_track0014_frame000210.jpg",
+        "camera2_track0014_frame000240.jpg",
+        "camera2_track0014_frame000270.jpg",
+        "camera2_track0014_frame000300.jpg",
+        "camera2_track0014_frame000330.jpg",
+        "camera2_track0014_frame000360.jpg",
+        "camera2_track0014_frame000390.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 15,
+      "first_frame": 210,
+      "first_time_seconds": 8.4,
+      "last_frame": 390,
+      "last_time_seconds": 15.6,
+      "observed_frames": 7,
+      "max_confidence": 0.8282,
+      "confidence_history": [
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.4574
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.8282
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.4283
+        },
+        {
+          "frame_number": 300,
+          "timestamp_seconds": 12.0,
+          "confidence": 0.5079
+        },
+        {
+          "frame_number": 330,
+          "timestamp_seconds": 13.2,
+          "confidence": 0.4204
+        },
+        {
+          "frame_number": 360,
+          "timestamp_seconds": 14.4,
+          "confidence": 0.5404
+        },
+        {
+          "frame_number": 390,
+          "timestamp_seconds": 15.6,
+          "confidence": 0.5997
+        }
+      ],
+      "last_box": [
+        1041,
+        182,
+        1134,
+        512
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 7,
+      "duration_seconds": 7.2,
+      "crop_filenames": [
+        "camera2_track0015_frame000210.jpg",
+        "camera2_track0015_frame000240.jpg",
+        "camera2_track0015_frame000270.jpg",
+        "camera2_track0015_frame000300.jpg",
+        "camera2_track0015_frame000330.jpg",
+        "camera2_track0015_frame000360.jpg",
+        "camera2_track0015_frame000390.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 16,
+      "first_frame": 210,
+      "first_time_seconds": 8.4,
+      "last_frame": 270,
+      "last_time_seconds": 10.8,
+      "observed_frames": 3,
+      "max_confidence": 0.7766,
+      "confidence_history": [
+        {
+          "frame_number": 210,
+          "timestamp_seconds": 8.4,
+          "confidence": 0.4496
+        },
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.7766
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.7765
+        }
+      ],
+      "last_box": [
+        1772,
+        186,
+        1886,
+        547
+      ],
+      "status": "ended",
+      "lifecycle_status": "COMPLETED",
+      "crop_count": 3,
+      "duration_seconds": 2.4,
+      "crop_filenames": [
+        "camera2_track0016_frame000210.jpg",
+        "camera2_track0016_frame000240.jpg",
+        "camera2_track0016_frame000270.jpg"
+      ]
+    },
+    {
+      "camera_id": "camera2",
+      "track_id": 17,
+      "first_frame": 240,
+      "first_time_seconds": 9.6,
+      "last_frame": 390,
+      "last_time_seconds": 15.6,
+      "observed_frames": 6,
+      "max_confidence": 0.6778,
+      "confidence_history": [
+        {
+          "frame_number": 240,
+          "timestamp_seconds": 9.6,
+          "confidence": 0.4737
+        },
+        {
+          "frame_number": 270,
+          "timestamp_seconds": 10.8,
+          "confidence": 0.6579
+        },
+        {
+          "frame_number": 300,
+          "timestamp_seconds": 12.0,
+          "confidence": 0.6538
+        },
+        {
+          "frame_number": 330,
+          "timestamp_seconds": 13.2,
+          "confidence": 0.6778
+        },
+        {
+          "frame_number": 360,
+          "timestamp_seconds": 14.4,
+          "confidence": 0.4252
+        },
+        {
+          "frame_number": 390,
+          "timestamp_seconds": 15.6,
+          "confidence": 0.475
+        }
+      ],
+      "last_box": [
+        1095,
+        98,
+        1163,
+        316
+      ],
+      "status": "temporarily lost",
+      "lifecycle_status": "LOST",
+      "crop_count": 6,
+      "duration_seconds": 6.0,
+      "crop_filenames": [
+        "camera2_track0017_frame000240.jpg",
+        "camera2_track0017_frame000270.jpg",
+        "camera2_track0017_frame000300.jpg",
+        "camera2_track0017_frame000330.jpg",
+        "camera2_track0017_frame000360.jpg",
+        "camera2_track0017_frame000390.jpg"
+      ]
+    }
+  ]
+}

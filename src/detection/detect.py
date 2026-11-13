@@ -106,18 +106,24 @@ def detect_people_in_frame(
     frame: np.ndarray,
     conf_threshold: float = CONFIDENCE_THRESHOLD,
     image_size: int = 640,
+    nms_iou_threshold: float = 0.70,
 ) -> List[Dict]:
     """
     Runs YOLO inference on a single frame targeting only the 'person' class.
     Returns a list of valid detected bounding boxes with clipped coordinates.
     """
     height, width = frame.shape[:2]
+    if not 0.0 <= conf_threshold <= 1.0:
+        raise ValueError("Detection confidence must be between 0 and 1.")
+    if not 0.0 < nms_iou_threshold <= 1.0:
+        raise ValueError("NMS IoU threshold must be greater than 0 and at most 1.")
     results = model.predict(
         source=frame,
         conf=conf_threshold,
         classes=[PERSON_CLASS_ID],
         device="cpu",
         imgsz=image_size,
+        iou=nms_iou_threshold,
         verbose=False,
     )
 
@@ -138,6 +144,9 @@ def detect_people_in_frame(
 
         crop_w = x2 - x1
         crop_h = y2 - y1
+
+        if x2 <= x1 or y2 <= y1 or not np.isfinite(confidence):
+            continue
 
         detections.append({
             "box": (x1, y1, x2, y2),

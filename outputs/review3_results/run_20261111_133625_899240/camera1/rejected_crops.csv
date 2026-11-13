@@ -1,0 +1,9 @@
+camera_id,track_id,frame_number,timestamp_seconds,reason,confidence,sharpness,width,height,preview_filename
+camera1,1,15,0.6,lower_quality_in_time_window,0.7495,2280.56,233,332,camera1_track0001_frame000015_lower_quality_in_time_window.jpg
+camera1,3,15,0.6,lower_quality_in_time_window,0.688,2427.11,169,213,camera1_track0003_frame000015_lower_quality_in_time_window.jpg
+camera1,5,15,0.6,lower_quality_in_time_window,0.4604,4651.0,72,118,camera1_track0005_frame000015_lower_quality_in_time_window.jpg
+camera1,6,15,0.6,lower_quality_in_time_window,0.3844,4770.61,125,148,camera1_track0006_frame000015_lower_quality_in_time_window.jpg
+camera1,5,90,3.6,lower_quality_in_time_window,0.4066,5409.07,60,109,camera1_track0005_frame000090_lower_quality_in_time_window.jpg
+camera1,6,90,3.6,lower_quality_in_time_window,0.5839,2788.43,237,337,camera1_track0006_frame000090_lower_quality_in_time_window.jpg
+camera1,7,165,6.6,lower_quality_in_time_window,0.3817,1388.11,482,420,camera1_track0007_frame000165_lower_quality_in_time_window.jpg
+camera1,12,165,6.6,lower_quality_in_time_window,0.7082,2066.24,234,333,camera1_track0012_frame000165_lower_quality_in_time_window.jpg
