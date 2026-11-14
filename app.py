@@ -31,8 +31,8 @@ from src.reid.hypotheses import (
 from src.reid.osnet_extractor import CHECKPOINT_NAME, OSNetExtractor
 from src.reid.matcher import match_two_cameras, write_matches_csv
 from src.reid.global_registry import (
-    ensure_identity_source, find_identity_for_track, get_or_create_identity,
-    load_registry, reject_track_association,
+    associate_confirmed_track, ensure_identity_source, find_identity_for_track,
+    get_or_create_identity, load_registry, reject_track_association,
 )
 from src.reid.video_results import render_all_camera_tracking_videos
 from src.tracking.selected_person import selected_tracking_state
@@ -208,7 +208,6 @@ def show_camera_panels(results: list[dict], run_dir: Path,
                        selected_track_id: int | None,
                        paused_selection: str | None = None) -> None:
     st.markdown('<div class="eyebrow">CAMERA WORKSPACE</div>', unsafe_allow_html=True)
-    st.subheader("Two-camera video workspace")
     st.subheader("Processed camera videos")
     selected_camera_id = None
     if active_selection:
@@ -743,9 +742,11 @@ with settings_c:
                               help="Smaller sizes run faster on CPU; large sizes may help small distant people.")
 with settings_d:
     tracker_max_age = st.number_input(
-        "Keep lost tracks (frames)", min_value=int(frame_interval), max_value=300,
-        value=max(30, int(frame_interval)), step=5,
-        help="Must be at least the sampling interval. After this many missed frames, the track is ended.",
+        "Keep lost tracks (detections)", min_value=1, max_value=300,
+        value=30, step=5,
+        help="Number of missed detection opportunities before a lost track is ended. "
+             "YOLO runs every N frames, so one opportunity spans N frames; 30 keeps a "
+             "briefly hidden person across about 30 sampling intervals.",
     )
 with settings_e:
     nms_iou_threshold = st.slider(
@@ -775,7 +776,7 @@ if st.button("▶  PROCESS CAMERA VIDEOS", type="primary", disabled=not uploaded
         run_dir.mkdir(parents=True, exist_ok=False)
         detector_path = ROOT / "yolo26n.pt"
         if not detector_path.is_file():
-            model = load_detector(detector_path)
+            load_detector(detector_path)
         detector_stat = detector_path.stat()
         with st.spinner("Loading the pretrained YOLO26n model on CPU…"):
             model = get_model(str(detector_path), detector_stat.st_mtime_ns, detector_stat.st_size)

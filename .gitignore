@@ -13,3 +13,26 @@ __pycache__/
 # Temporary files
 *.log
 .DS_Store
+
+# Local datasets and generated results
+data/
+outputs/
+
+# Downloaded models and third-party repositories
+models/
+third_party/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python environments
+venv/
+.venv/
+
+# Cache and logs
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.log

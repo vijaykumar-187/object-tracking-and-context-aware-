@@ -203,6 +203,7 @@ def process_video(
     tracker_max_age: int = TRACK_MAX_AGE,
     tracker_max_center_distance: float = 2.5,
     tracker_iou_threshold: float = 0.05,
+    tracker_min_hits: int = 2,
     min_crop_width: int = MIN_WIDTH,
     min_crop_height: int = MIN_HEIGHT,
     blur_threshold: float = BLUR_THRESHOLD,
@@ -212,7 +213,10 @@ def process_video(
 
     YOLO is evaluated at the requested interval. A Kalman filter predicts boxes
     between detector checks and Hungarian assignment associates new detections
-    with existing tracks. IDs remain camera-local. Good crops are time-spread,
+    with existing tracks. IDs remain camera-local. A track is exposed only after
+    ``tracker_min_hits`` real detection associations, and ``tracker_max_age`` is
+    counted in missed detection opportunities (not raw frames) so retention is
+    independent of the sampling interval. Good crops are time-spread,
     quality-ranked, and capped at eight per track.
     """
     source = validate_video_path(video_path)
@@ -220,8 +224,10 @@ def process_video(
         raise ValueError("Frame sampling interval must be at least 1.")
     if image_size < 320 or image_size > 1280:
         raise ValueError("YOLO image size must be between 320 and 1280 pixels.")
-    if tracker_max_age < frame_interval:
-        raise ValueError("Lost-track retention must be at least the YOLO sampling interval.")
+    if tracker_max_age < 1:
+        raise ValueError("Lost-track retention must be at least one missed detection opportunity.")
+    if tracker_min_hits < 1:
+        raise ValueError("Track confirmation requires at least one detection association.")
     if tracker_max_center_distance <= 0:
         raise ValueError("Tracker association distance must be greater than zero.")
     if not 0.0 <= tracker_iou_threshold <= 1.0:
@@ -269,7 +275,8 @@ def process_video(
     rejected_crops_dir.mkdir(parents=True, exist_ok=True)
     track_summary_file = output / "tracks.json"
     tracker = SortTracker(max_age=tracker_max_age, min_iou=tracker_iou_threshold,
-                          max_center_distance=tracker_max_center_distance)
+                          max_center_distance=tracker_max_center_distance,
+                          frame_interval=frame_interval, min_hits=tracker_min_hits)
     crop_candidates: dict[int, dict[int, dict]] = {}
     track_stats: dict[int, dict] = {}
     frames_read = frames_processed = total_detections = 0
@@ -464,8 +471,11 @@ def process_video(
         "camera_id": camera_id,
         "tracker": "SORT-style Kalman filter + Hungarian assignment",
         "track_ids_are_camera_local": True,
-        "max_lost_frames": tracker_max_age,
-        "tracker_settings": {"max_age_frames": tracker_max_age,
+        "max_lost_frames": tracker_max_age * frame_interval,
+        "tracker_settings": {"max_age_detections": tracker_max_age,
+                             "max_age_frames": tracker_max_age * frame_interval,
+                             "frame_interval": frame_interval,
+                             "min_hits": tracker_min_hits,
                              "max_center_distance": tracker_max_center_distance,
                              "iou_threshold": tracker_iou_threshold},
         "detector_settings": {"image_size": image_size,

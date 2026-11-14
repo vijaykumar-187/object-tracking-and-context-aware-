@@ -16,6 +16,7 @@ from src.detection.video_processor import (
     render_selected_track_video,
     validate_video_path,
 )
+from src.tracking.sort_tracker import SortTracker
 
 
 def textured_frame() -> np.ndarray:
@@ -114,10 +115,48 @@ class TestVideoProcessing(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "at least 1"):
             process_video("camera1", self.video_path, object(), self.root / "out", frame_interval=0)
 
-    def test_lost_track_window_must_cover_detector_sampling_interval(self):
-        with self.assertRaisesRegex(ValueError, "at least the YOLO sampling interval"):
+    def test_lost_track_window_must_be_a_positive_opportunity_count(self):
+        with self.assertRaisesRegex(ValueError, "at least one missed detection"):
             process_video("camera1", self.video_path, object(), self.root / "out",
-                          frame_interval=5, tracker_max_age=3)
+                          frame_interval=5, tracker_max_age=0)
+
+    def test_min_hits_must_be_positive(self):
+        with self.assertRaisesRegex(ValueError, "at least one detection association"):
+            process_video("camera1", self.video_path, object(), self.root / "out",
+                          tracker_min_hits=0)
+
+    @patch("src.detection.video_processor.detect_people_in_frame")
+    def test_max_age_may_be_smaller_than_frame_interval(self, detect):
+        # max_age is now counted in detection opportunities, so a value below the
+        # sampling interval is valid and must not raise (the old frame-based
+        # guard rejected it).
+        detect.return_value = []
+        result = process_video("camera1", self.video_path, object(), self.root / "out",
+                               frame_interval=5, tracker_max_age=1)
+        summary = json.loads(Path(result.track_summary_file).read_text(encoding="utf-8"))
+        self.assertEqual(summary["tracker_settings"]["max_age_detections"], 1)
+        self.assertEqual(summary["tracker_settings"]["frame_interval"], 5)
+        self.assertEqual(summary["tracker_settings"]["max_age_frames"], 5)
+
+    @patch("src.detection.video_processor.detect_people_in_frame")
+    def test_sampling_config_is_passed_to_the_tracker(self, detect):
+        detect.return_value = [{"box": (10, 10, 150, 250), "confidence": 0.9}]
+        captured: dict = {}
+
+        class SpyTracker(SortTracker):
+            def __init__(self, *args, **kwargs):
+                captured.update(kwargs)
+                super().__init__(*args, **kwargs)
+
+        with patch("src.detection.video_processor.SortTracker", SpyTracker):
+            result = process_video("camera1", self.video_path, object(), self.root / "spy",
+                                   frame_interval=2, tracker_min_hits=3, tracker_max_age=7)
+        self.assertEqual(captured.get("frame_interval"), 2)
+        self.assertEqual(captured.get("min_hits"), 3)
+        self.assertEqual(captured.get("max_age"), 7)
+        summary = json.loads(Path(result.track_summary_file).read_text(encoding="utf-8"))
+        self.assertEqual(summary["tracker_settings"]["min_hits"], 3)
+        self.assertEqual(summary["tracker_settings"]["frame_interval"], 2)
 
     def test_tracker_iou_threshold_is_validated(self):
         with self.assertRaisesRegex(ValueError, "Tracker IoU threshold"):

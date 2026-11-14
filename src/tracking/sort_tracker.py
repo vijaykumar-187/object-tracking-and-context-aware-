@@ -80,6 +80,7 @@ class Track:
     time_since_update: int
     last_frame: int
     confidence: float
+    missed_detections: int = 0
 
     @staticmethod
     def _measurement(box: Box) -> np.ndarray:
@@ -119,6 +120,7 @@ class Track:
         self.state[2:4] = np.maximum(self.state[2:4], 2.0)
         self.hits += 1
         self.time_since_update = 0
+        self.missed_detections = 0
         self.last_frame = frame_index
         self.confidence = confidence
 
@@ -144,12 +146,35 @@ class SortTracker:
     """Maintain local track IDs through movement and short missed-detection gaps."""
 
     def __init__(self, max_age: int = 30, min_iou: float = 0.01,
-                 max_center_distance: float = 2.5) -> None:
+                 max_center_distance: float = 2.5, frame_interval: int = 1,
+                 min_hits: int = 2, max_cost: float = 0.95) -> None:
+        """Create a tracker.
+
+        ``max_age`` is counted in missed *detection opportunities* (sampled
+        frames), not raw frames, so a track survives the same real-world grace
+        period regardless of ``frame_interval``. ``frame_interval`` tells the
+        tracker which frames carry real detections so missed-detection
+        bookkeeping and the ``recovered`` flag follow the sampling rate.
+        ``min_hits`` is the number of actual detection associations a track
+        needs before it is exposed as a confirmed person; tentative tracks stay
+        internal and never surface as people. ``max_cost`` is the association
+        reject threshold and defaults to the original SORT gate value.
+        """
+        if max_age < 1:
+            raise ValueError("max_age must be at least one detection opportunity.")
+        if frame_interval < 1:
+            raise ValueError("frame_interval must be at least one.")
+        if min_hits < 1:
+            raise ValueError("min_hits must be at least one.")
         self.max_age = max_age
         self.min_iou = min_iou
         self.max_center_distance = max_center_distance
+        self.frame_interval = frame_interval
+        self.min_hits = min_hits
+        self.max_cost = max_cost
         self.tracks: list[Track] = []
         self.next_id = 1
+        self._sampled_frames = 0
 
     @staticmethod
     def _center_distance(track_box: Box, detection_box: Box) -> float:
@@ -160,6 +185,13 @@ class SortTracker:
         return float(np.hypot(tx - dx, ty - dy) / scale)
 
     def update(self, detections: list[dict], frame_index: int) -> list[TrackObservation]:
+        # A "sampled" frame is one where the detector actually ran. Missed
+        # detection bookkeeping and the recovered flag follow this sampling rate
+        # instead of the raw frame counter, so max_age means detection
+        # opportunities and a normal consecutive match is not flagged recovered.
+        sampled = frame_index % self.frame_interval == 0
+        if sampled:
+            self._sampled_frames += 1
         for track in self.tracks:
             track.predict()
         boxes = [tuple(int(v) for v in det["box"]) for det in detections]
@@ -177,10 +209,13 @@ class SortTracker:
         observed_by_track: dict[int, int] = {}
         recovered_tracks: set[int] = set()
         for row, col in _linear_assignment(cost):
-            if cost[row, col] >= 0.95:
+            if cost[row, col] >= self.max_cost:
                 continue
             track = self.tracks[row]
-            if track.time_since_update > 1:
+            # Recovered means the track genuinely missed at least one detection
+            # opportunity before this match, not merely that the detector is
+            # sampled every N frames.
+            if track.missed_detections > 0:
                 recovered_tracks.add(track.track_id)
             track.correct(boxes[col], scores[col], frame_index)
             matched_detections.add(col)
@@ -193,9 +228,21 @@ class SortTracker:
                 self.tracks.append(track)
                 self.next_id += 1
 
-        self.tracks = [track for track in self.tracks if track.time_since_update <= self.max_age]
+        if sampled:
+            for track in self.tracks:
+                if track.track_id not in observed_by_track:
+                    track.missed_detections += 1
+
+        self.tracks = [track for track in self.tracks
+                       if track.missed_detections <= self.max_age]
+        # Expose a track only once confirmed (enough real detection
+        # associations). The short video-start grace keeps the first frames of a
+        # clip, and very short videos, usable before confirmation is possible.
+        grace = self._sampled_frames <= self.min_hits
         observations = []
         for track in self.tracks:
+            if track.hits < self.min_hits and not grace:
+                continue
             box = track.box()
             if box[2] <= box[0] or box[3] <= box[1]:
                 continue
