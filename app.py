@@ -34,7 +34,10 @@ from src.reid.global_registry import (
     associate_confirmed_track, ensure_identity_source, find_identity_for_track,
     get_or_create_identity, load_registry, reject_track_association,
 )
-from src.reid.video_results import render_all_camera_tracking_videos
+from src.reid.video_results import (
+    combined_video_status, render_all_camera_tracking_videos,
+    render_combined_global_person_video,
+)
 from src.tracking.selected_person import selected_tracking_state
 
 ROOT = Path(__file__).resolve().parent
@@ -666,6 +669,79 @@ def show_cross_camera_matching(results: list[dict], run_dir: Path,
                 assignment_csv.read_bytes(), file_name=f"{selected_global_id}_camera_results.csv",
                 mime="text/csv", key=f"download_{selected_global_id}_report",
             )
+
+    st.markdown("#### Combined multi-camera identity video")
+    st.caption(
+        "Build one video from every confirmed member of a global identity. Tiles are aligned by "
+        "elapsed time from each source video; the cameras are not synchronised, so a tile is not "
+        "asserted to show the same real-world moment as its neighbours."
+    )
+    registry_path = run_dir / "global_identity_registry.json"
+    identity_ids = sorted(load_registry(registry_path))
+    if not identity_ids:
+        st.caption("No global identity yet. Mark a pair as SAME PERSON to create one, then return here.")
+        return
+    current_global_id = find_identity_for_track(registry_path, source_camera, selected_id)
+    chosen_global_id = st.selectbox(
+        "Global Person ID", identity_ids,
+        index=(identity_ids.index(current_global_id)
+               if current_global_id in identity_ids else 0),
+        key=f"combined_global_id_{run_dir.name}",
+    )
+    combined_key = f"combined_video_{run_dir.name}_{chosen_global_id}"
+    if st.button(
+        "Proceed", type="primary",
+        key=f"proceed_combined_video_{run_dir.name}_{chosen_global_id}",
+        help="Render one combined multi-camera MP4 for every confirmed local track in this identity.",
+    ):
+        try:
+            combined_status = st.empty()
+            combined_progress = st.progress(0.0)
+
+            def update_combined_progress(current: int, total: int) -> None:
+                total_label = f"{total:,}" if total else "unknown"
+                combined_status.caption(
+                    f"Composing combined multi-camera video · frame {current:,} of {total_label}"
+                )
+                combined_progress.progress(
+                    min(1.0, current / total) if total > 0 else 0.0
+                )
+
+            with st.spinner("Composing one combined video from every confirmed camera…"):
+                render_combined_global_person_video(
+                    results, run_dir, chosen_global_id,
+                    progress_callback=update_combined_progress,
+                )
+            st.success(f"Created the combined multi-camera video for {chosen_global_id}.")
+        except (OSError, ValueError, KeyError, cv2.error) as exc:
+            st.error(f"The combined video could not be created: {exc}")
+    combined_manifest = combined_video_status(results, run_dir, chosen_global_id)
+    if combined_manifest:
+        st.markdown(f"### {chosen_global_id} — Combined Multi-Camera View")
+        st.caption(
+            f"{combined_manifest['frame_count']} frames · "
+            f"{combined_manifest['fps']:.0f} FPS · "
+            f"{combined_manifest['duration_seconds']:.1f} s · "
+            f"{combined_manifest['width']}×{combined_manifest['height']} · "
+            f"{combined_manifest['grid']['rows']}×{combined_manifest['grid']['columns']} grid"
+        )
+        st.video(combined_manifest["video_path"])
+        combined_path = Path(combined_manifest["video_path"])
+        st.download_button(
+            f"Download {combined_path.name}", combined_path.read_bytes(),
+            file_name=combined_path.name, mime="video/mp4",
+            key=f"download_{combined_key}",
+        )
+        st.dataframe([{
+            "Tile": f"row {row['tile_row'] + 1}, column {row['tile_column'] + 1}",
+            "Camera": row["camera_name"],
+            "Local track IDs": row["local_track_ids"] or "—",
+            "Members": row["member_count"],
+            "Source duration (s)": row["source_duration_seconds"],
+        } for row in combined_manifest["cameras"]], hide_index=True, use_container_width=True)
+        st.caption(combined_manifest["synchronisation"])
+    else:
+        st.caption("No current combined video for this identity. Click Proceed to generate it.")
 
 
 def show_evaluation(results: list[dict], fingerprint_sets: dict[str, dict[str, object]],
