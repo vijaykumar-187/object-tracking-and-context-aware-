@@ -5,7 +5,8 @@ import unittest
 from pathlib import Path
 
 from src.reid.hypotheses import (
-    build_global_identities, load_hypotheses, save_hypothesis,
+    build_global_identities, confirmed_component, load_hypotheses,
+    save_hypothesis,
 )
 
 
@@ -60,6 +61,83 @@ class TestCrossCameraHypotheses(unittest.TestCase):
         self.assertEqual(groups[0]["global_id"], "G001")
         self.assertEqual(len(groups[0]["members"]), 3)
         self.assertTrue(groups[0]["review_conflict"])
+
+    def test_same_camera_tracks_remain_distinct_in_a_confirmed_component(self):
+        hypotheses = {
+            "camera1:1|camera2:8": {
+                "camera1_track_id": 1, "camera2_track_id": 8,
+                "camera1_id": "camera1", "camera2_id": "camera2",
+                "status": "SAME PERSON",
+            },
+            "camera2:8|camera1:5": {
+                "camera1_track_id": 8, "camera2_track_id": 5,
+                "camera1_id": "camera2", "camera2_id": "camera1",
+                "status": "SAME PERSON",
+            },
+        }
+        component = confirmed_component(hypotheses, "camera1", 1)
+        self.assertEqual(component,
+                         {("camera1", 1), ("camera1", 5), ("camera2", 8)})
+
+    def test_build_global_identities_keeps_same_camera_tracks_distinct(self):
+        hypotheses = {
+            "camera1:1|camera2:8": {
+                "camera1_track_id": 1, "camera2_track_id": 8,
+                "camera1_id": "camera1", "camera2_id": "camera2",
+                "status": "SAME PERSON",
+            },
+            "camera1:1|camera1:5": {
+                "camera1_track_id": 1, "camera2_track_id": 5,
+                "camera1_id": "camera1", "camera2_id": "camera1",
+                "status": "SAME PERSON",
+            },
+        }
+        groups = build_global_identities(hypotheses)
+        self.assertEqual(len(groups), 1)
+        members = {(member["camera_id"], member["track_id"])
+                   for member in groups[0]["members"]}
+        self.assertEqual(members,
+                         {("camera1", 1), ("camera1", 5), ("camera2", 8)})
+        self.assertFalse(groups[0]["review_conflict"])
+
+    def test_same_camera_different_people_conflict_is_flagged(self):
+        hypotheses = {
+            "camera1:1|camera1:5": {
+                "camera1_track_id": 1, "camera2_track_id": 5,
+                "camera1_id": "camera1", "camera2_id": "camera1",
+                "status": "SAME PERSON",
+            },
+            "camera1:1|camera2:8": {
+                "camera1_track_id": 1, "camera2_track_id": 8,
+                "camera1_id": "camera1", "camera2_id": "camera2",
+                "status": "SAME PERSON",
+            },
+            "camera1:5|camera2:8": {
+                "camera1_track_id": 5, "camera2_track_id": 8,
+                "camera1_id": "camera1", "camera2_id": "camera2",
+                "status": "DIFFERENT PEOPLE",
+            },
+        }
+        groups = build_global_identities(hypotheses)
+        self.assertEqual(len(groups), 1)
+        self.assertTrue(groups[0]["review_conflict"])
+        self.assertEqual(len(groups[0]["conflicts"]), 1)
+
+    def test_same_camera_hypothesis_round_trip_uses_a_distinct_key(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "hypotheses.json"
+            save_hypothesis(path, 1, 5, 0.71, "OSNet", "SAME PERSON",
+                            "camera1", "camera1", "Entrance", "Entrance",
+                            global_person_id="GLOBAL-001")
+            save_hypothesis(path, 1, 8, 0.93, "OSNet", "SAME PERSON",
+                            "camera1", "camera2", "Entrance", "Lobby")
+            loaded = load_hypotheses(path)
+        self.assertEqual(set(loaded), {"camera1:1|camera1:5", "camera1:1|camera2:8"})
+        same_camera = loaded["camera1:1|camera1:5"]
+        self.assertEqual(same_camera["camera1_id"], "camera1")
+        self.assertEqual(same_camera["camera2_id"], "camera1")
+        self.assertEqual(same_camera["global_person_id"], "GLOBAL-001")
+        self.assertEqual(same_camera["status"], "SAME PERSON")
 
 
 if __name__ == "__main__":

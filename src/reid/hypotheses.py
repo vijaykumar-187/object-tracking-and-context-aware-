@@ -13,7 +13,11 @@ VALID_STATUSES = {"UNVERIFIED", "SAME PERSON", "DIFFERENT PEOPLE", "UNCERTAIN"}
 
 def confirmed_component(hypotheses: dict[str, dict], camera_id: str,
                         track_id: int) -> set[tuple[str, int]]:
-    """Return the selected node and every transitively confirmed SAME PERSON link."""
+    """Return the selected node and every transitively confirmed SAME PERSON link.
+
+    Nodes are keyed by ``(camera_id, track_id)``, so several local tracks from
+    one camera remain distinct members of the same confirmed component.
+    """
     adjacency: dict[tuple[str, int], set[tuple[str, int]]] = {}
     for item in hypotheses.values():
         if item.get("status") != "SAME PERSON":

@@ -358,6 +358,73 @@ def show_selected_track(results: list[dict], run_dir: Path) -> tuple[int | None,
     return selected_id, selected_camera_id, active_key if active_selection == active_key else None
 
 
+def apply_identity_decision(run_dir: Path, registry_path: Path,
+                            hypotheses_path: Path,
+                            source_camera: str, selected_id: int,
+                            source_name: str, destination_id: str,
+                            choice_id: int, destination_name: str,
+                            similarity: float, model_label: str,
+                            decision: str) -> str | None:
+    """Persist one manually reviewed pair and invalidate stale identity videos.
+
+    The global identity is always anchored on the currently selected source
+    track. A same-camera sibling joins the same identity as a confirmed member.
+    Only DIFFERENT PEOPLE removes an existing association; UNVERIFIED and
+    UNCERTAIN record the review without changing registry membership.
+    """
+    global_id = None
+    try:
+        if decision == "SAME PERSON":
+            global_id = find_identity_for_track(
+                registry_path, source_camera, selected_id,
+            ) or find_identity_for_track(registry_path, destination_id, choice_id)
+            global_id = global_id or get_or_create_identity(
+                registry_path, source_camera, selected_id, source_name,
+            )
+            ensure_identity_source(
+                registry_path, global_id, source_camera, selected_id, source_name,
+            )
+            associate_confirmed_track(
+                registry_path, global_id, destination_id, choice_id,
+                destination_name, similarity, model_label,
+            )
+        elif decision == "DIFFERENT PEOPLE":
+            global_id = find_identity_for_track(
+                registry_path, source_camera, selected_id,
+            )
+            candidate_identity = find_identity_for_track(
+                registry_path, destination_id, choice_id,
+            )
+            if global_id and candidate_identity == global_id:
+                reject_track_association(
+                    registry_path, global_id, destination_id, choice_id,
+                )
+        # UNVERIFIED and UNCERTAIN record the review only. They never remove a
+        # registry association the reviewer already confirmed.
+        save_hypothesis(
+            hypotheses_path, selected_id, choice_id, similarity,
+            model_label, decision, source_camera, destination_id,
+            source_name, destination_name,
+            global_person_id=global_id if decision == "SAME PERSON" else None,
+        )
+        if global_id:
+            video_dir = run_dir / "global_person_videos" / global_id
+            if video_dir.is_dir():
+                for old_video in video_dir.glob("*.mp4"):
+                    old_video.unlink(missing_ok=True)
+                (video_dir / "video_manifest.json").unlink(missing_ok=True)
+                (video_dir / "global_person_assignments.csv").unlink(missing_ok=True)
+                (video_dir / "manifest_signature.json").unlink(missing_ok=True)
+            st.session_state.pop(
+                f"global_video_outputs_{run_dir.name}_{global_id}", None,
+            )
+        st.success(f"Saved review: {decision}" + (f" · {global_id}" if decision == "SAME PERSON" else ""))
+        st.rerun()
+    except (OSError, ValueError, KeyError) as exc:
+        st.error(f"Could not update the identity association: {exc}")
+    return global_id
+
+
 def show_cross_camera_matching(results: list[dict], run_dir: Path,
                                fingerprint_sets: dict[str, dict[str, object]],
                                preferred_track_id: int | None = None) -> None:
@@ -416,6 +483,55 @@ def show_cross_camera_matching(results: list[dict], run_dir: Path,
     )
     rankings = rank_across_cameras(query_key, fingerprints, camera_ids, threshold)
     hypotheses_path = run_dir / "cross_camera_hypotheses.json"
+    sibling_ids = [track_id for track_id in source_ids if track_id != selected_id]
+    with st.expander("Add another local ID from this camera (manual review)"):
+        if not sibling_ids:
+            st.caption("This camera has no other local track to review.")
+        else:
+            sibling_id = st.selectbox(
+                f"Local ID from {get_camera_name(camera_by_id[source_camera])}",
+                sibling_ids,
+                key=f"same_camera_sibling_{run_dir.name}_{source_camera}_{selected_id}",
+            )
+            sibling_rows = [row for row in load_crop_rows(camera_by_id[source_camera])
+                            if row["track_id"] == sibling_id]
+            if sibling_rows:
+                sibling_crop = max(sibling_rows, key=lambda row: row["quality_score"])
+                if Path(sibling_crop["path"]).is_file():
+                    st.image(
+                        sibling_crop["path"],
+                        caption=f"Sibling crop · {get_camera_name(camera_by_id[source_camera])} ID {sibling_id} · frame {sibling_crop['frame_number']} · {sibling_crop['timestamp_seconds']}s",
+                        width=220,
+                    )
+            sibling_key = f"{source_camera}:{sibling_id}"
+            pair_ranking = rank_candidates(
+                fingerprints.get(query_key),
+                {sibling_key: fingerprints.get(sibling_key)},
+            )
+            pair_similarity = pair_ranking[0]["similarity"] if pair_ranking else 0.0
+            if pair_ranking:
+                st.metric("Read-only cosine similarity", f"{pair_similarity:.3f}")
+                st.caption("This score only helps you compare crops. It never assigns an identity.")
+            else:
+                st.caption("No appearance similarity is available for this pair; review the crops.")
+            same_key = f"{source_camera}:{selected_id}|{source_camera}:{sibling_id}"
+            existing_same = load_hypotheses(hypotheses_path).get(same_key, {})
+            same_options = ["UNVERIFIED", "SAME PERSON", "DIFFERENT PEOPLE", "UNCERTAIN"]
+            same_prior = existing_same.get("status", "UNVERIFIED")
+            same_decision = st.selectbox(
+                f"Review {get_camera_name(camera_by_id[source_camera])} ID {selected_id} ↔ "
+                f"{get_camera_name(camera_by_id[source_camera])} ID {sibling_id}",
+                same_options,
+                index=same_options.index(same_prior) if same_prior in same_options else 0,
+                key=f"same_camera_status_{run_dir.name}_{source_camera}_{selected_id}_{sibling_id}",
+            )
+            if st.button("Save manual review", key=f"save_same_camera_{run_dir.name}_{source_camera}_{selected_id}_{sibling_id}"):
+                apply_identity_decision(
+                    run_dir, run_dir / "global_identity_registry.json", hypotheses_path,
+                    source_camera, selected_id, get_camera_name(camera_by_id[source_camera]),
+                    source_camera, sibling_id, get_camera_name(camera_by_id[source_camera]),
+                    pair_similarity, selected_model, same_decision,
+                )
     for destination_id in camera_ids:
         if destination_id == source_camera:
             continue
@@ -468,56 +584,12 @@ def show_cross_camera_matching(results: list[dict], run_dir: Path,
             key=f"hypothesis_status_{run_dir.name}_{source_camera}_{selected_id}_{destination_id}_{choice_id}",
         )
         if st.button("Save manual review", key=f"save_hypothesis_{run_dir.name}_{source_camera}_{selected_id}_{destination_id}_{choice_id}"):
-            registry_path = run_dir / "global_identity_registry.json"
-            source_name = get_camera_name(camera_by_id[source_camera])
-            destination_name = get_camera_name(destination)
-            try:
-                if decision == "SAME PERSON":
-                    global_id = find_identity_for_track(
-                        registry_path, source_camera, selected_id,
-                    ) or find_identity_for_track(registry_path, destination_id, choice_id)
-                    global_id = global_id or get_or_create_identity(
-                        registry_path, source_camera, selected_id, source_name,
-                    )
-                    ensure_identity_source(
-                        registry_path, global_id, source_camera, selected_id, source_name,
-                    )
-                    associate_confirmed_track(
-                        registry_path, global_id, destination_id, choice_id,
-                        destination_name, picked["similarity"], selected_model,
-                    )
-                else:
-                    global_id = find_identity_for_track(
-                        registry_path, source_camera, selected_id,
-                    )
-                    candidate_identity = find_identity_for_track(
-                        registry_path, destination_id, choice_id,
-                    )
-                    if global_id and candidate_identity == global_id:
-                        reject_track_association(
-                            registry_path, global_id, destination_id, choice_id,
-                        )
-                save_hypothesis(
-                    hypotheses_path, selected_id, choice_id, picked["similarity"],
-                    selected_model, decision, source_camera, destination_id,
-                    source_name, destination_name,
-                    global_person_id=global_id if decision == "SAME PERSON" else None,
-                )
-                if global_id:
-                    video_dir = run_dir / "global_person_videos" / global_id
-                    if video_dir.is_dir():
-                        for old_video in video_dir.glob("*.mp4"):
-                            old_video.unlink(missing_ok=True)
-                        (video_dir / "video_manifest.json").unlink(missing_ok=True)
-                        (video_dir / "global_person_assignments.csv").unlink(missing_ok=True)
-                        (video_dir / "manifest_signature.json").unlink(missing_ok=True)
-                    st.session_state.pop(
-                        f"global_video_outputs_{run_dir.name}_{global_id}", None,
-                    )
-                st.success(f"Saved review: {decision}" + (f" · {global_id}" if decision == "SAME PERSON" else ""))
-                st.rerun()
-            except (OSError, ValueError, KeyError) as exc:
-                st.error(f"Could not update the identity association: {exc}")
+            apply_identity_decision(
+                run_dir, run_dir / "global_identity_registry.json", hypotheses_path,
+                source_camera, selected_id, get_camera_name(camera_by_id[source_camera]),
+                destination_id, choice_id, get_camera_name(destination),
+                picked["similarity"], selected_model, decision,
+            )
     st.caption("Similarity ranks visual candidates; only your manual decision records a confirmed or rejected pair.")
     st.markdown("#### Selected-person video results")
     st.caption("Confirmed matches receive the same persistent global ID. Other cameras still get a playable video with a clear no-match label and no bounding box.")
